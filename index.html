@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>HmeiStore</title>
+
+    <link rel="shortcut icon" href="../top/assets/download.jpg">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://vip-kingstore.com/assets/css/style.css">
+    <link rel="stylesheet" href="https://vip-kingstore.com/assets/css/flipdown.min.css">
+    <link rel="stylesheet" href="https://vip-kingstore.com/assets/css/flipdown.addon.css">
+
+    <style>
+        .accordion-button {
+            box-shadow: none !important;
+        }
+        .btn.disabled, .btn:disabled, fieldset:disabled {
+            background: #8ba4b1;
+            border-color: #8ba4b1;
+        }
+        .product .box {
+            margin-bottom: 40px;
+        }
+        .form-control {
+            box-shadow: none !important;
+            outline: none !important;
+        }
+        .bg-hero {
+            --background-hue: calc(var(--h,30) * 6);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;min-height: 200px;
+        }
+        .owl-dots {
+            display: none;
+        }
+        #content {
+            padding-top: 70px;
+            min-height: 600px;
+        }
+        .menu-nav a svg {
+            margin-right: 8px;
+            width: 16px;
+        }
+        .nav-search {
+            min-width: 320px;
+        }
+        .border-bottom-my {
+            border-bottom: 1px dashed var(--warna_4);
+        }
+        @media (min-width: 1400px) {
+            .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+                max-width: 1080px;
+            }
+        }
+        @media only screen and (max-width: 600px) {
+            .nav-search {
+                padding-top: 16px;
+                min-width: 100px;
+            }
+        }
+        div#datatable_paginate a, div#datatable_paginate a:focus, div#datatable_paginate a:active {
+            box-shadow: none !important;
+            outline: none !important;
+            border: none !important;
+            background: transparent !important;
+            color: #c5c5c5 !important;
+        }
+        
+        div#datatable_paginate a.current {
+            color: #fff !important;
+            background: var(--warna_2) !important;
+        }
+        
+        .fab-container {
+            position: fixed;
+            bottom: 70px;
+            right: 10px;
+            z-index: 999;
+            cursor: pointer;
+        }
+        .fab-icon-holder {
+            width: 45px;
+            height: 45px;
+            bottom: 140px;
+            left: 10px;
+            color: #fff;
+            background: #ff0;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 30px;
+            z-index: 99999;
+        }
+        .fab-options {
+            list-style-type: none;
+            margin: 0;
+            position: absolute;
+            bottom: 48px;
+            left: -37px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            transform: scale(0);
+            transform-origin: 85% bottom;
+        }
+        .fab-options li {
+            display: flex;
+            justify-content: flex-start;
+            padding: 5px;
+        }
+        .fab:hover + .fab-options,
+        .fab-options:hover {
+            opacity: 1;
+            transform: scale(1);
+        }
+    </style>
+
+    <style>
+        .eniv-popup-sosmed-button {
+            position: fixed;
+            right: 10px;
+            bottom: 114px;
+            background: #fff;
+            padding: 8px 12px;
+            border-radius: 12px;
+            color: #333;
+            font-weight: 500;
+            z-index: 2;
+            cursor: pointer;
+        }
+        .eniv-popup-sosmed-button img {
+            width: 26px;
+            margin-right: 4px;
+        }
+        .eniv-popup-sosmed-list {
+            position: fixed;
+            right: 10px;
+            bottom: 164px;
+            background: #fff;
+            z-index: 2;
+            transition: .4s;
+            border-radius: 8px;
+        }
+        .eniv-popup-sosmed-header {
+            padding: 12px;
+            background: #1c2878;
+            border-radius: 8px 8px 0 0;
+        }
+        .eniv-popup-sosmed-header h1 {
+            font-size: 16px;
+            margin-bottom: 2px;
+            font-weight: 600;
+        }
+        .eniv-popup-sosmed-header p {
+            margin-bottom: 0;
+        }
+        .eniv-popup-sosmed-item {
+            text-decoration: none;
+            display: block;
+            padding: 8px 12px;
+            border-bottom: 1px dashed #dddddd;
+        }
+        .eniv-popup-sosmed-item img {
+            width: 26px;
+        }
+        .eniv-popup-sosmed-item span {
+            color: #333;
+            margin-left: 4px;
+            font-weight: 500;
+        }
+        .eniv-popup-sosmed-item:last-child {
+            border-bottom: none;
+        }
+        .sosmed a {
+            margin: 0 6px 10px 0;
+            text-decoration: none;
+            background: #fff;
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 8px;
+        }
+        .sosmed a span {
+            color: #333;
+            font-weight: 500;
+            font-size: 13px;
+            margin-left: 2px;
+        }
+    </style>
+    <style>
+        .eniv-games-populer-title {
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .eniv-games-populer {
+            display: flex;
+            width: 100%;
+            text-decoration: none;
+            align-items: center;
+            margin-bottom: 20px;
+            background: var(--warna_2);
+            padding: 10px;
+            border-radius: 8px;
+            background-repeat: repeat-x;
+            background-position: top;
+            background-size: clamp(60em,100rem,100em) auto,cover;
+            outline-offset: 2px;
+            outline: 2px solid transparent;
+            transition: .2s;
+        }
+        .eniv-games-populer:hover {
+            outline: 3px solid #3d4683;
+        }
+        .eniv-games-populer img {
+            width: 44px;
+            border-radius: 6px;
+        }
+        .eniv-games-populer-data {
+            margin-left: 12px;
+        }
+        .eniv-games-populer-data h1 {
+            font-size: 14px;
+            margin-bottom: 4px;
+            color: #fff;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .eniv-games-populer-data span {
+            font-size: 12px;
+            color: #a7a9b2;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        @media screen AND (max-width: 520px) {
+            .eniv-games-populer-data h1 {
+                font-size: 12px;
+            }
+            .eniv-games-populer-data span {
+                font-size: 10px;
+                font-weight: 500;
+                color: #d7d7d7;
+            }
+        }
+    </style>
+    .
+        
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background: var(--warna_4);">
+        <div class="container">
+            <a class="navbar-brand" href="https://vip-kingstore.com">
+                <img src="../top/assets/hmeistore.png" alt="" width="170">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0 menu-nav ms-auto">
+            </div>
+        </div>
+    </nav>
+
+    <section id="content">
+                <div class="mb-4">
+            <div class="container">
+                <div class="owl-carousel owl-theme owl-banner">
+                                        <div class="item">
+                        <img src="../top/assets/hmei.png" alt="" width="100%" class="mt-4 rounded" style="box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="container">
+            <h1 class="eniv-games-populer-title"><span class="text-white">POPULER</span>
+            </h1>
+            <div class="row">
+                <div class="col-md-3 col-6">
+                    <a href="../top/payment.html" class="eniv-games-populer">
+                        <img src="https://vip-kingstore.com/assets/games/1675167380_9a1d704a84670afea3aa.jpg">
+                        <div class="eniv-games-populer-data">
+                            <h1>EASY VICTORY</h1>
+                            <span>8 BALL AUTO PLAY &amp; AIM</span>
+                        </div>
+                    </a>
+                </div>
+        <div class="container">
+            <div class="row">
+
+    <section id="footer">
+        <div class="container">
+
+            <div class="mb-3 mt-3">
+                    <div class="row align-items-center">
+                        <div class="col-md-8 text-center">
+                        </div>
+                        <div class="col-md-4 text-center">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-4 rounded-3 mb-4" style="background: var(--warna_4);"> 
+                <div class="row">
+                    <div class="col-md-7">
+                        <img src="../top/assets/hmeistore.png" alt="" width="176px" class="mb-3">
+                        <h5>HmeiStore</h5>
+                        <p class="fs-14">
+                            HmeiStore adalah layanan pembelian game, Pertama di indonesia HmeiStore adalah layanan pembelian terbaik saat ini.                         </p>
+                        <div class="sosmed mb-3">
+                                                        <a href="https://t.me/cheat_8ballpool_indonesia" target="_blank">
+                                <img src="https://vip-kingstore.com/assets/sosmed/1694565892_6066fc43d2f084b6464d.png" alt="">
+                                <span>Telegram</span>
+                            </a>
+                                                        <a href="https://api.whatsapp.com/send/?phone=6288975614989&text&type=phone_number&app_absent=0" target="_blank">
+                                <img src="https://vip-kingstore.com/assets/sosmed/1694152734_15d350994cb8350a2fed.png" alt="">
+                                <span>Whatsapp</span>
+                            </a>
+                                                    </div>
+                    </div>
+                    <div class="col-md-5 ">
+                        <div class="mb-4">
+    </section>
+    
+    <div class="fab-container d-none">
+        <div class="fab fab-icon-holder" style="background-color:#FFF; padding:5px">
+            <img src="https://vip-kingstore.com/assets/callcenter.png" class="img-fluid" alt="" style="margin-top: -6px;">
+        </div>
+        <ul class="fab-options">
+                        <li>
+                <a href="https://t.me/cheat_8ballpool_indonesia" class="text-decoration-none" target="_blank">
+                    <div class="fab-icon-holder bg-white">
+                        <img src="https://vip-kingstore.com/assets/sosmed/1694565892_6066fc43d2f084b6464d.png" width="45" style="margin-top: -8px;">
+                    </div>
+                </a>
+            </li>
+                        <li>
+                <a href="https://api.whatsapp.com/send/?phone=6288975614989&text&type=phone_number&app_absent=0" class="text-decoration-none" target="_blank">
+                    <div class="fab-icon-holder bg-white">
+                        <img src="https://vip-kingstore.com/assets/sosmed/1694152734_15d350994cb8350a2fed.png" width="45" style="margin-top: -8px;">
+                    </div>
+                </a>
+            </li>
+                    </ul>
+        <a href="#" class="act-btn-top text-decoration-none" onclick="toTop()" style="display: none; background-color: #bd4cae; bottom: 19px;">
+            <i class="fas fa-angle-up mt-2"></i>
+        </a>
+    </div>
+    
+    <div class="eniv-popup-sosmed">
+        <div class="eniv-popup-sosmed-button" onclick="show_bantuan();">
+            <img src="https://vip-kingstore.com/assets/callcenter.png">
+            Bantuan
+        </div>
+        <div class="eniv-popup-sosmed-list d-none">
+            <div class="eniv-popup-sosmed-header">
+                <h1>Butuh Bantuan?</h1>
+                <p>Silahkan klik link di bawah ini</p>
+            </div>
+                        <a href="https://t.me/cheat_8ballpool_indonesia" class="eniv-popup-sosmed-item" target="_blank">
+                <img src="https://vip-kingstore.com/assets/sosmed/1694565892_6066fc43d2f084b6464d.png">
+                <span>Telegram</span>
+            </a>
+                        <a href="https://api.whatsapp.com/send/?phone=6288975614989&text&type=phone_number&app_absent=0" class="eniv-popup-sosmed-item" target="_blank">
+                <img src="https://vip-kingstore.com/assets/sosmed/1694152734_15d350994cb8350a2fed.png">
+                <span>Whatsapp</span>
+            </a>
+                    </div>
+    </div>
+
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://vip-kingstore.com/assets/js/flipdown.min.js"></script>
+
+            <script>
+            $('.owl-banner').owlCarousel({
+                loop:false,
+                margin:10,
+                nav:false,
+                responsive:{
+                    0:{
+                        items:1
+                    }
+                }
+            });
+        </script>
+    
+    <script>
+        function show_bantuan() {
+            var el = $(".eniv-popup-sosmed-list");
+
+            if (el.hasClass('d-none')) {
+                el.removeClass('d-none');
+            } else {
+                el.addClass('d-none');
+            }
+        }
+    </script>
+</body>
+</html>

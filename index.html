@@ -1,0 +1,174 @@
+<html
+  lang="en"
+    class="height-full"
+  data-color-mode="light" data-light-theme="light" data-dark-theme="dark"
+  data-a11y-animated-images="system" data-a11y-link-underlines="true">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HmeiSeven Jual Beli Akun</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body id="top">
+
+    <header>
+        <h1>HmeiSeven</h1>
+        <input type="text" id="searchBar" placeholder="Cari akun Mobile Legends..." onkeyup="filterProducts()">
+    </header>
+    
+    <section class="section hero" id="home" aria-label="hero" data-section>
+        <div class="container">
+          <ul class="has-scrollbar">
+            <li class="scrollbar-item">
+              <div class="hero-card has-bg-image" style="background-image: url('./assets/cek.jpg')">
+                <div class="card-content">
+                    <h1 class="h1 hero-title">
+                      Jual Beli Akun <br>
+                      By HmeiSeven
+                    </h1>
+  
+                    <p class="hero-text">
+                      Dengan harga yang terjangkau dan promo-promo menarik yang ditawarkan menjadi pilihan kalian.
+                    </p>
+  
+                    <p class="price">Harga Dimulai Rp100.000 - 1Jt</p>
+                    <a href="https://wa.me/6281318619003" class="btn btn-primary">LIHAT</a>
+                  </div>
+                </div>
+            </ul>
+          </div>
+        </section>
+      <div class="product-category-title"> Mobile Legends</div>
+    <div class="container">
+        <div class="product-grid" id="productGrid">
+            <!-- Produk lainnya -->
+        </div>
+        <div class="no-results" id="noResults">Item Tidak Ditemukan</div>
+        <div class="scroll-buttons">
+            <button onclick="scrollLeft()">&#8592;</button>
+            <button onclick="scrollRight()">&#8594;</button>
+        </div>
+        <!-- Tombol Kembali ke Produk Awal -->
+        <div class="back-to-start">
+            <button onclick="resetToFirstPage()">Kembali ke Produk Awal</button>
+        </div>
+    </div>
+    
+    
+    
+    <footer>
+        <div class="p-4 rounded-3 mb-4">
+            <div class="row">
+                <div class="col-md-7">
+                    <h5>HmeiSeven Store</h5>
+                    <p class="fs-14">
+                        adalah layanan pembelian game, Pertama di indonesia HmeiStore kini menjadi layanan pembelian terbaik saat ini.
+                    </p>
+                    <div class="sosmed mb-3">
+                        <a href="https://t.me/cheat_8ballpool_indonesia" target="_blank"><span>Telegram</span></a>
+                        <a href="https://api.whatsapp.com/send/?phone=6288975614989&text&type=phone_number&app_absent=0" target="_blank"><span>Whatsapp</span></a>
+                    </div>
+                </div>
+                <span>&copy; 2025 HmeiSeven All Right Reserved.</span>
+            </div>
+        </div>
+    </footer>
+
+    
+
+    <script>
+const initialProducts = [
+    { name: "Akun MLBB Murah", image: "./assets/cek.jpg" },
+    { name: "Akun MLBB Skin 357", image: "./assets/cek.jpg" },
+    { name: "Akun Smurf BP", image: "./assets/cek.jpg" },
+    { name: "Akun MLBB Elite", image: "./assets/cek.jpg" },
+    { name: "Akun Smurf Pro", image: "./assets/cek.jpg" },
+    { name: "Akun Smurf Advanced", image: "./assets/cek.jpg" },
+    { name: "Akun Smurf Premium", image: "./assets/cek.jpg" },
+    { name: "Akun Smurf Exclusive", image: "./assets/cek.jpg" },
+    { name: "Akun MLBB Diamond", image: "./assets/cek.jpg" },
+    { name: "Akun MLBB Top", image: "./assets/cek.jpg" }
+];
+
+const additionalProducts = [
+    { name: "Akun MLBB Pro", image: "./assets/cek.jpg" },
+    { name: "Akun MLBB Ultimate", image: "./assets/cek.jpg" },
+    { name: "Akun Smurf Advanced 2", image: "./assets/cek.jpg" },
+    { name: "Akun Smurf Premium 2", image: "./assets/cek.jpg" },
+    { name: "Akun Smurf Pro 2", image: "./assets/cek.jpg" },
+    { name: "Akun MLBB Diamond 2", image: "./assets/cek.jpg" },
+    { name: "Akun MLBB Top 2", image: "./assets/cek.jpg" },
+    { name: "Akun Smurf Ultimate", image: "./assets/cek.jpg" },
+    { name: "Akun Smurf Exclusive 2", image: "./assets/cek.jpg" },
+    { name: "Akun MLBB Special", image: "./assets/cek.jpg" }
+];
+
+let currentPage = 0;
+const productsPerPage = 10;
+const totalProducts = initialProducts.length + additionalProducts.length;
+
+function loadProducts() {
+    const productGrid = document.getElementById('productGrid');
+    const startIdx = currentPage * productsPerPage;
+    const endIdx = startIdx + productsPerPage;
+
+    let productsToDisplay = initialProducts.slice(startIdx, endIdx);
+    if (currentPage > 0) {
+        productsToDisplay = additionalProducts.slice(startIdx - initialProducts.length, endIdx - initialProducts.length);
+    }
+    productGrid.innerHTML = ''; // Clear current grid
+    productsToDisplay.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.classList.add('product-card');
+        productCard.setAttribute('data-name', product.name);
+        productCard.innerHTML = `
+            <img src="${product.image}" alt="${product.name}">
+            <h3>${product.name}</h3>
+        `;
+        productGrid.appendChild(productCard);
+    });
+}
+
+
+function scrollLeft() {
+    if (currentPage > 0) {
+        currentPage--;
+        loadProducts();
+    }
+}
+
+function scrollRight() {
+    if ((currentPage + 1) * productsPerPage < totalProducts) {
+        currentPage++;
+        loadProducts();
+    }
+}
+
+function resetToFirstPage() {
+    currentPage = 0;
+    loadProducts();
+}
+        function filterProducts() {
+            const searchInput = document.getElementById('searchBar').value.toLowerCase();
+            const productCards = document.querySelectorAll('.product-card');
+            const noResults = document.getElementById('noResults');
+            let hasResults = false;
+
+            productCards.forEach(card => {
+                const productName = card.getAttribute('data-name').toLowerCase();
+                if (productName.includes(searchInput)) {
+                    card.style.display = "flex";
+                    hasResults = true;
+                } else {
+                    card.style.display = "none";
+                }
+            });
+
+            noResults.style.display = hasResults ? "none" : "block";
+        }
+
+        loadProducts(); // Initial load
+    </script>
+
+</body>
+</html>

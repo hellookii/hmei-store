@@ -1,0 +1,2276 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title> HmeiSeven</title>
+
+    <link rel="shortcut icon" href="/assets/1705673732_0808da0ddc5d2cb2e179.jpg">
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/flipdown.addon.css">
+    <link rel="stylesheet" href="/assets/css/flipdown.min.css">
+    <link rel="stylesheet" href="/assets/js/flipdown.min.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/flipdown.min.css">
+    <link rel="stylesheet" href="/assets/css/flipdown.addon.css">
+
+    <style>
+        .accordion-button {
+            box-shadow: none !important;
+        }
+        .btn.disabled, .btn:disabled, fieldset:disabled {
+            background: #8ba4b1;
+            border-color: #8ba4b1;
+        }
+        .product .box {
+            margin-bottom: 40px;
+        }
+        .form-control {
+            box-shadow: none !important;
+            outline: none !important;
+        }
+        .bg-hero {
+            background-image: radial-gradient(rgba(255 255 255/50%),rgba(255 255 255/0)),url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgMTkyMCAxMDgwIiB3aWR0aD0iMTkyMCIgaGVpZ2h0PSIxMDgwIj4KPGcgZmlsbD0iI2ZmZiI+Cgk8cGF0aCBmaWxsLW9wYWNpdHk9Ii4xIiBkPSJNMTExMS45IDBjLTE2OS4zIDIwMy4xLTE1NC43IDM0NC41IDEyMC42IDM5OC4yIDMzMi41IDYwLjYgMjg2LjkgMjc2LjkgODAuMSA0ODkuOS02My41IDU2LjctMTUwLjQgMTIxLjUtMjU0LjIgMTkxLjloNDYuNWMxMTUuOS03Ny42IDIxMi42LTE0OC43IDI4MS42LTIxMC40IDIwNi45LTIxMyAyNTIuNS00MjkuMy04MC4xLTQ4OS45LTI2Ni45LTUyLTI4OC44LTE4Ni42LTEzNS42LTM3OS43aC01OC45eiIvPjxwYXRoIGZpbGwtb3BhY2l0eT0iLjEiIGQ9Ik0xMTExLjkgMGMtMTY5LjMgMjAzLjEtMTU0LjggMzQ0LjUgMTIwLjYgMzk4LjIgMzMyLjUgNjAuNiAyODYuOSAyNzYuOSA4MC4xIDQ4OS45LTYzLjUgNTYuNy0xNTAuNCAxMjEuNS0yNTQuMiAxOTEuOWg5Mi42YzEyOC4zLTg0LjggMjM0LjktMTYyLjMgMzA5LjQtMjI4LjggMjA2LjktMjEzIDI1Mi41LTQyOS4zLTgwLjEtNDg5LjktMjU4LjUtNTAuNC0yODcuMy0xNzgtMTUwLTM2MS4zaC0xMTguNHoiLz48cGF0aCBmaWxsLW9wYWNpdHk9Ii4xIiBkPSJNMTExMS45IDBjLTE2OS4zIDIwMy4xLTE1NC43IDM0NC41IDEyMC42IDM5OC4yIDMzMi41IDYwLjYgMjg2LjkgMjc2LjkgODAuMSA0ODkuOS02My41IDU2LjctMTUwLjUgMTIxLjUtMjU0LjIgMTkxLjloMTM4LjNjMTQwLjgtOTIgMjU3LjYtMTc2IDMzNy40LTI0Ny4zIDIwNi45LTIxMyAyNTIuNS00MjkuMy04MC4xLTQ4OS45LTI0OS42LTQ4LjYtMjg0LjktMTY5LjQtMTYzLjItMzQyLjhoLTE3OC45eiIvPjxwYXRoIGZpbGwtb3BhY2l0eT0iLjEiIGQ9Ik0xMTExLjkgMGMtMTY5LjMgMjAzLjEtMTU0LjcgMzQ0LjUgMTIwLjYgMzk4LjIgMzMyLjUgNjAuNiAyODYuOSAyNzYuOSA4MC4xIDQ4OS45LTYzLjUgNTYuNy0xNTAuNSAxMjEuNS0yNTQuMiAxOTEuOWgxODMuOGMxNTMuNS05OS4zIDI4MC43LTE4OS43IDM2NS44LTI2NS43IDIwNi45LTIxMyAyNTIuNS00MjkuMy04MC4xLTQ4OS45LTI0MC43LTQ3LTI4Mi4xLTE2MC45LTE3NS44LTMyNC40aC0yNDAuMnoiLz48cGF0aCBmaWxsLW9wYWNpdHk9Ii4xIiBkPSJNMTExMS45IDBjLTE2OS4zIDIwMy4xLTE1NC44IDM0NC41IDEyMC42IDM5OC4yIDMzMi41IDYwLjYgMjg2LjkgMjc2LjkgODAuMSA0ODkuOS02My41IDU2LjctMTUwLjUgMTIxLjUtMjU0LjIgMTkxLjloMjI5YzE2Ni4zLTEwNi42IDMwNC4xLTIwMy41IDM5NC41LTI4NC4yIDIwNi45LTIxMyAyNTIuNS00MjkuMy04MC4xLTQ4OS45LTIzMS42LTQ1LjEtMjc4LjctMTUyLjMtMTg3LjMtMzA1LjloLTMwMi42eiIvPjxwYXRoIGZpbGwtb3BhY2l0eT0iLjEiIGQ9Ik03MzkuNCAwaC0yNDJDMjYzLjEgMTU2LjQgOTkuNCAzMjcuOSA3My4xIDUyOC45Yy0zMC42IDI1NS44IDM4NyAxNDcuNCAzODcgMzEyLjUtMi45IDc4LTMxLjUgMTU3LjMtNzkuNyAyMzguNmgzMDcuMmM4NS4yLTExNC4yIDEzNy44LTIyMy43IDE0MS44LTMzMC45IDAtMTY1LjItNDE3LjYtNTYuNy0zODctMzEyLjVDNDYzLjYgMjc0LjQgNTc0LjMgMTMxLjQgNzM5LjQgMHoiLz48cGF0aCBmaWxsLW9wYWNpdHk9Ii4xIiBkPSJNNzM5LjQgMEg1NDRDMzI0LjQgMTUxLjQgMTcyLjIgMzE3LjMgMTQ2LjkgNTEwLjRjLTMwLjYgMjU1LjggMzg3IDE0Ny40IDM4NyAzMTIuNS0zLjEgODMuOS0zNiAxNjkuMi05MSAyNTcuMWgyNDQuNmM4NS4yLTExNC4yIDEzNy44LTIyMy43IDE0MS44LTMzMC45IDAtMTY1LjItNDE3LjYtNTYuNy0zODctMzEyLjVDNDYzLjYgMjc0LjQgNTc0LjMgMTMxLjQgNzM5LjQgMHoiLz48cGF0aCBmaWxsLW9wYWNpdHk9Ii4xIiBkPSJNNzM5LjQgMEg1OTEuNUMzODYuMSAxNDYuNCAyNDUuMSAzMDYuNyAyMjAuOCA0OTJjLTMwLjYgMjU1LjggMzg3IDE0Ny40IDM4NyAzMTIuNUM2MDQuNSA4OTQuMyA1NjcgOTg1LjcgNTA1IDEwODBoMTgyLjZjODUuMi0xMTQuMiAxMzcuOC0yMjMuNyAxNDEuOC0zMzAuOSAwLTE2NS4yLTQxNy42LTU2LjctMzg3LTMxMi41QzQ2My42IDI3NC40IDU3NC4zIDEzMS40IDczOS40IDB6Ii8+PHBhdGggZmlsbC1vcGFjaXR5PSIuMSIgZD0iTTczOS40IDBoLTk5LjVjLTE5MS41IDE0MS40LTMyMiAyOTYtMzQ1LjMgNDczLjUtMzAuNiAyNTUuOCAzODcgMTQ3LjQgMzg3IDMxMi41LTMuNSA5NS42LTQ1LjggMTkzLjEtMTE1LjMgMjk0aDEyMS4yYzg1LjItMTE0LjIgMTM3LjgtMjIzLjcgMTQxLjgtMzMwLjkgMC0xNjUuMi00MTcuNi01Ni43LTM4Ny0zMTIuNUM0NjMuNiAyNzQuNCA1NzQuMyAxMzEuNCA3MzkuNCAweiIvPjxwYXRoIGZpbGwtb3BhY2l0eT0iLjEiIGQ9Ik03MzkuNCAwaC01MC4yQzUxMS4xIDEzNi40IDM5MC43IDI4NS4yIDM2OC41IDQ1NWMtMzAuNiAyNTUuOCAzODcgMTQ3LjQgMzg3IDMxMi41LTMuOCAxMDEuNS01MS4xIDIwNS0xMjguMyAzMTIuNWg2MC4zYzg1LjItMTE0LjIgMTM3LjgtMjIzLjcgMTQxLjgtMzMwLjkgMC0xNjUuMi00MTcuNi01Ni43LTM4Ny0zMTIuNUM0NjMuNiAyNzQuNCA1NzQuMyAxMzEuNCA3MzkuNCAweiIvPgo8L2c+Cjwvc3ZnPg==),linear-gradient(135deg,hsl(var(--background-hue) 15% 50%),hsl(calc(var(--background-hue) + 20) 15% 90%));
+            --background-hue: calc(var(--h,30) * 6);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;min-height: 200px;
+        }
+        .owl-dots {
+            display: none;
+        }
+        #content {
+            padding-top: 70px;
+            min-height: 600px;
+        }
+        .menu-nav a svg {
+            margin-right: 8px;
+            width: 16px;
+        }
+        .nav-search {
+            min-width: 320px;
+        }
+        .border-bottom-my {
+            border-bottom: 1px dashed var(--warna_4);
+        }
+        @media (min-width: 1400px) {
+            .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+                max-width: 1080px;
+            }
+        }
+        @media only screen and (max-width: 600px) {
+            .nav-search {
+                padding-top: 16px;
+                min-width: 100px;
+            }
+        }
+        div#datatable_paginate a, div#datatable_paginate a:focus, div#datatable_paginate a:active {
+            box-shadow: none !important;
+            outline: none !important;
+            border: none !important;
+            background: transparent !important;
+            color: #c5c5c5 !important;
+        }
+        
+        div#datatable_paginate a.current {
+            color: #fff !important;
+            background: var(--warna_2) !important;
+        }
+        
+        .fab-container {
+            position: fixed;
+            bottom: 70px;
+            right: 10px;
+            z-index: 999;
+            cursor: pointer;
+        }
+        .fab-icon-holder {
+            width: 45px;
+            height: 45px;
+            bottom: 140px;
+            left: 10px;
+            color: #fff;
+            background: #ff0;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 30px;
+            z-index: 99999;
+        }
+        .fab-options {
+            list-style-type: none;
+            margin: 0;
+            position: absolute;
+            bottom: 48px;
+            left: -37px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            transform: scale(0);
+            transform-origin: 85% bottom;
+        }
+        .fab-options li {
+            display: flex;
+            justify-content: flex-start;
+            padding: 5px;
+        }
+        .fab:hover + .fab-options,
+        .fab-options:hover {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .custom-social-proof {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 9999999999999 !important;
+        }
+        .custom-social-proof {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 9999999999999 !important;
+            display: none;
+        }
+        .custom-notification {
+            width: 320px;
+            border: 0;
+            text-align: left;
+            z-index: 99999;
+            box-sizing: border-box;
+            font-weight: 400;
+            border-radius: 6px;
+            box-shadow: 2px 2px 10px 2px hsla(0, 4%, 4%, 0.2);
+            background-color: var(--warna_4);
+            position: relative;
+            cursor: pointer;
+        }
+        .custom-notification-container {
+            display: flex !important;
+            align-items: center;
+            height: 80px;
+        }
+        .custom-notification-image-wrapper img {
+            max-height: 75px;
+            width: 90px;
+            overflow: hidden;
+            border-radius: 6px 0 0 6px;
+            object-fit: cover;
+        }
+                    .custom-notification-content-wrapper {
+                        margin: 0;
+                        height: 100%;
+                        color: gray;
+                        padding-left: 20px;
+                        padding-right: 20px;
+                        border-radius: 0 6px 6px 0;
+                        flex: 1;
+                        display: flex !important;
+                        flex-direction: column;
+                        justify-content: center;
+                        .custom-notification-content {
+                            font-family: inherit !important;
+                            margin: 0 !important;
+                            padding: 0 !important;
+                            font-size: 14px;
+                            line-height: 16px;
+                            small {
+                                margin-top: 3px !important;
+                                display: block !important;
+                                font-size: 12px !important;
+                                opacity: .8;
+                            }
+                        }
+                    }
+                .custom-close {
+                    position: absolute;
+                    top: 8px;
+                    right: 8px;
+                    height: 12px;
+                    width: 12px;
+                    cursor: pointer;
+                    transition: .2s ease-in-out;
+                    transform: rotate(45deg);
+                    opacity: 0;
+                    &::before {
+                        content: "";
+                        display: block;
+                        width: 100%;
+                        height: 2px;
+                        background-color: gray;
+                        position: absolute;
+                        left: 0;
+                        top: 5px;
+                    }
+                    &::after {
+                        content: "";
+                        display: block;
+                        height: 100%;
+                        width: 2px;
+                        background-color: gray;
+                        position: absolute;
+                        left: 5px;
+                        top: 0;
+                    }
+                }
+                &:hover {
+                    .custom-close {
+                        opacity: 1;
+                    }
+                }
+    </style>
+
+    <style>
+        .eniv-popup-sosmed-button {
+            position: fixed;
+            right: 10px;
+            bottom: 114px;
+            background: #fff;
+            padding: 8px 12px;
+            border-radius: 12px;
+            color: #333;
+            font-weight: 500;
+            z-index: 2;
+            cursor: pointer;
+        }
+        .eniv-popup-sosmed-button img {
+            width: 26px;
+            margin-right: 4px;
+        }
+        .eniv-popup-sosmed-list {
+            position: fixed;
+            right: 10px;
+            bottom: 164px;
+            background: #fff;
+            z-index: 2;
+            transition: .4s;
+            border-radius: 8px;
+        }
+        .eniv-popup-sosmed-header {
+            padding: 12px;
+            background: #1c2878;
+            border-radius: 8px 8px 0 0;
+        }
+        .eniv-popup-sosmed-header h1 {
+            font-size: 16px;
+            margin-bottom: 2px;
+            font-weight: 600;
+        }
+        .eniv-popup-sosmed-header p {
+            margin-bottom: 0;
+        }
+        .eniv-popup-sosmed-item {
+            text-decoration: none;
+            display: block;
+            padding: 8px 12px;
+            border-bottom: 1px dashed #dddddd;
+        }
+        .eniv-popup-sosmed-item img {
+            width: 26px;
+        }
+        .eniv-popup-sosmed-item span {
+            color: #333;
+            margin-left: 4px;
+            font-weight: 500;
+        }
+        .eniv-popup-sosmed-item:last-child {
+            border-bottom: none;
+        }
+        .sosmed a {
+            margin: 0 6px 10px 0;
+            text-decoration: none;
+            background: #fff;
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 8px;
+        }
+        .sosmed a span {
+            color: #333;
+            font-weight: 500;
+            font-size: 13px;
+            margin-left: 2px;
+        }
+    </style>
+    <style>
+        .eniv-games-populer-title {
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .eniv-games-populer {
+            display: flex;
+            width: 100%;
+            text-decoration: none;
+            align-items: center;
+            margin-bottom: 20px;
+            background: var(--warna_2);
+            padding: 10px;
+            border-radius: 8px;
+            background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgMTkyMCAxMDAwIj48c3R5bGUgdHlwZT0idGV4dC9jc3MiPnBhdGh7b3BhY2l0eTouMTtjbGlwLXBhdGg6dXJsKCNjbGlwUGF0aCk7ZmlsbDp1cmwoI2xpbmVhckdyYWRpZW50KTt9PC9zdHlsZT48Y2xpcFBhdGggaWQ9ImNsaXBQYXRoIj48cmVjdCB3aWR0aD0iMTkyMCIgaGVpZ2h0PSIxMDAwIi8+PC9jbGlwUGF0aD48bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhckdyYWRpZW50IiB4MT0iMCUiIHkxPSIwJSIgeDI9IjkwJSIgeTI9IjAlIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9ImhzbCgwIDAlIDEwMCUvMSkiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9ImhzbCgwIDAlIDEwMCUvMCkiLz48L2xpbmVhckdyYWRpZW50PjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE5MjAsMTAwMClzY2FsZSgtMSwtMSkiPjxwYXRoIGQ9Ik0xMzg0LjUgMzQzLjJMMTkyLjcgMTUzNWwtMjEzLjUtM0wxMzgzIDEyOC4ybDEuNSAyMTV6Ii8+PHBhdGggZD0iTTE5MTkuNyA0NDguM0wxMzU5IDEwMDlsLTEwMC40LTEuNEwxOTE5IDM0Ny4xbC43IDEwMS4yeiIvPjxwYXRoIGQ9Ik0xMTc2LjcgNTE0LjNMNjE2IDEwNzVsLTEwMC40LTEuNEwxMTc2IDQxMy4xbC43IDEwMS4yeiIvPjxwYXRoIGQ9Ik02NDQuNyA0NTcuM0w4NCAxMDE4bC0xMDAuNC0xLjRMNjQ0IDM1Ni4xbC43IDEwMS4yeiIvPjxwYXRoIGQ9Ik0xMzg3LjcgNDQ4LjNMODI3IDEwMDlsLTEwMC40LTEuNEwxMzg3IDM0Ny4xbC43IDEwMS4yeiIvPjxwYXRoIGQ9Ik0xMjUwLjEgNDkzLjhsLTU0NSA1NDUtNTIuNyA0My42IDY0MS45LTY0MS45LTQ0LjIgNTMuM3oiLz48cGF0aCBkPSJNODkxLjEgNjM5LjFMLTc3OCAyMzA4LjNsLTI5OC45LTQuMkw4ODkgMzM4LjFsMi4xIDMwMXoiLz48cGF0aCBkPSJNMTg3MC40IDQxOS44TC0yOC44IDIzMTlsLTM0MC4xLTQuOEwxODY4IDc3LjNsMi40IDM0Mi41eiIvPjxwYXRoIGQ9Ik05MDguNCA0MzYuOEwtOTkwLjggMjMzNmwtMzQwLjEtNC44TDkwNiA5NC4zbDIuNCAzNDIuNXoiLz48cGF0aCBkPSJNMTYzMi40IDUxNS44TC0yNjYuOCAyNDE1bC0zNDAuMS00LjhMMTYzMCAxNzMuM2wyLjQgMzQyLjV6Ii8+PHBhdGggZD0iTTExNzYuMyA1NjcuMUwtMTQ0NS42IDMxODlsLTQ2OS41LTYuNkwxMTczIDk0LjNsMy4zIDQ3Mi44eiIvPjxwYXRoIGQ9Ik0xNDI3LjMgNTgwLjFMLTExOTQuNiAzMjAybC00NjkuNS02LjZMMTQyNCAxMDcuM2wzLjMgNDcyLjh6Ii8+PHBhdGggZD0iTTE2NDkuNSA4ODAuMkw0NTcuNyAyMDcybC0yMTMuNS0zTDE2NDggNjY1LjJsMS41IDIxNXoiLz48cGF0aCBkPSJNNjc1LjggNTIyLjJsLTI2MjEuOSAyNjIxLjktNDY5LjQtNi42TDY3Mi41IDQ5LjRsMy4zIDQ3Mi44eiIvPjxwYXRoIGQ9Ik0yNTk1LjkgNTIyLjJMLTI2IDMxNDQuMWwtNDY5LjUtNi42TDI1OTIuNiA0OS40bDMuMyA0NzIuOHoiLz48L2c+PC9zdmc+);
+            background-repeat: repeat-x;
+            background-position: top;
+            background-size: clamp(60em,100rem,100em) auto,cover;
+            outline-offset: 2px;
+            outline: 2px solid transparent;
+            transition: .2s;
+        }
+        .eniv-games-populer:hover {
+            outline: 3px solid #3d4683;
+        }
+        .eniv-games-populer img {
+            width: 44px;
+            border-radius: 6px;
+        }
+        .eniv-games-populer-data {
+            margin-left: 12px;
+        }
+        .eniv-games-populer-data h1 {
+            font-size: 14px;
+            margin-bottom: 4px;
+            color: #fff;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .eniv-games-populer-data span {
+            font-size: 12px;
+            color: #a7a9b2;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        @media screen AND (max-width: 520px) {
+            .eniv-games-populer-data h1 {
+                font-size: 12px;
+            }
+            .eniv-games-populer-data span {
+                font-size: 10px;
+                font-weight: 500;
+                color: #d7d7d7;
+            }
+        }
+    </style>
+
+            <style>
+            .category-container {
+                display: flex;
+                flex-wrap: nowrap;
+                overflow: auto;
+                gap: 4px;
+            }
+            .category {
+                color: #f4f6ff !important;
+                text-decoration: none;
+                display: inline-block;
+                padding: 9px 14px;
+                margin-right: 4px;
+                margin-bottom: 6px;
+                border-radius: 6px;
+                line-height: 14px;
+                font-size: 14px;
+                cursor: pointer;
+                white-space: nowrap;
+                font-weight: 600;
+                background: #1c2874;
+            }
+            .category.active {
+                color: #fff !important;
+                background: #ff9800;
+            }
+            .running-text-box {
+                background: var(--warna_2);
+                font-size: 14px;
+                line-height: 14px;
+                padding: 10px;
+                border-radius: 6px;
+                border: 1px solid #202b72;
+            }
+        </style>
+        <style>
+            .box-flash {
+                /*background: var(--warna_2);
+                padding: 20px;
+                border-radius: 12px;*/
+            }
+            .flash-title {
+                font-size: 18px;
+                font-weight: 600;
+                display: inline-block;
+            }
+            .flash-title-top {
+                font-size: 18px;
+                font-weight: 600;
+                margin-bottom: 14px;
+            }
+            .flash-title-top i {
+                margin-right: 6px;
+                animation: bolt 3s linear infinite;
+            }
+            .card-flash {
+                width: 100%;
+                background-size: cover;
+                background-repeat: no-repeat;
+                padding: 12px;
+                border-radius: 12px;
+                text-decoration: none;
+                position: relative;
+                background: #222f87;
+                display: flex;
+                align-items: flex-start;
+            }
+            .card-flash img {
+                width: 60px !important;
+                margin-right: 6px;
+                border-radius: 6px;
+            }
+            .card-flash-content {
+                position: relative;
+                z-index: 1;
+            }
+            .card-flash-content p {
+                font-weight: 600;
+                margin-bottom: 4px;
+                font-size: 13px;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+            .card-flash-content span {
+                margin-bottom: 0;
+                display: block;
+                font-weight: 600;
+                font-size: 12px;
+                font-style: italic;
+            }
+            .card-flash-content del {
+                color: #6775d3;
+                font-weight: 500;
+                font-size: 11px;
+            }
+            #flash {
+                margin-top: 20px;
+            }
+            @keyframes bolt {
+                0%,19.999%,22%,62.999%,64%,64.999%,70%,to {
+                    opacity: .99;
+                    filter: drop-shadow(0 0 1px rgba(252,211,77)) drop-shadow(0 0 15px rgba(245,158,11)) drop-shadow(0 0 1px rgba(252,211,77))
+                }
+
+                20%,21.999%,63%,63.999%,65%,69.999% {
+                    opacity: .4;
+                    filter: none
+                }
+            }
+        </style>
+        
+<style>body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body.swal2-height-auto{height:auto !important}body.swal2-no-backdrop .swal2-container{background-color:rgba(0,0,0,0) !important;pointer-events:none}body.swal2-no-backdrop .swal2-container .swal2-popup{pointer-events:all}body.swal2-no-backdrop .swal2-container .swal2-modal{box-shadow:0 0 10px rgba(0,0,0,.4)}body.swal2-toast-shown .swal2-container{box-sizing:border-box;width:360px;max-width:100%;background-color:rgba(0,0,0,0);pointer-events:none}body.swal2-toast-shown .swal2-container.swal2-top{inset:0 auto auto 50%;transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-top-end,body.swal2-toast-shown .swal2-container.swal2-top-right{inset:0 0 auto auto}body.swal2-toast-shown .swal2-container.swal2-top-start,body.swal2-toast-shown .swal2-container.swal2-top-left{inset:0 auto auto 0}body.swal2-toast-shown .swal2-container.swal2-center-start,body.swal2-toast-shown .swal2-container.swal2-center-left{inset:50% auto auto 0;transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-center{inset:50% auto auto 50%;transform:translate(-50%, -50%)}body.swal2-toast-shown .swal2-container.swal2-center-end,body.swal2-toast-shown .swal2-container.swal2-center-right{inset:50% 0 auto auto;transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-start,body.swal2-toast-shown .swal2-container.swal2-bottom-left{inset:auto auto 0 0}body.swal2-toast-shown .swal2-container.swal2-bottom{inset:auto auto 0 50%;transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-end,body.swal2-toast-shown .swal2-container.swal2-bottom-right{inset:auto 0 0 auto}@media print{body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow-y:scroll !important}body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown)>[aria-hidden=true]{display:none}body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown) .swal2-container{position:static !important}}div:where(.swal2-container){display:grid;position:fixed;z-index:1060;inset:0;box-sizing:border-box;grid-template-areas:"top-start     top            top-end" "center-start  center         center-end" "bottom-start  bottom-center  bottom-end";grid-template-rows:minmax(min-content, auto) minmax(min-content, auto) minmax(min-content, auto);height:100%;padding:.625em;overflow-x:hidden;transition:background-color .1s;-webkit-overflow-scrolling:touch}div:where(.swal2-container).swal2-backdrop-show,div:where(.swal2-container).swal2-noanimation{background:rgba(0,0,0,.4)}div:where(.swal2-container).swal2-backdrop-hide{background:rgba(0,0,0,0) !important}div:where(.swal2-container).swal2-top-start,div:where(.swal2-container).swal2-center-start,div:where(.swal2-container).swal2-bottom-start{grid-template-columns:minmax(0, 1fr) auto auto}div:where(.swal2-container).swal2-top,div:where(.swal2-container).swal2-center,div:where(.swal2-container).swal2-bottom{grid-template-columns:auto minmax(0, 1fr) auto}div:where(.swal2-container).swal2-top-end,div:where(.swal2-container).swal2-center-end,div:where(.swal2-container).swal2-bottom-end{grid-template-columns:auto auto minmax(0, 1fr)}div:where(.swal2-container).swal2-top-start>.swal2-popup{align-self:start}div:where(.swal2-container).swal2-top>.swal2-popup{grid-column:2;place-self:start center}div:where(.swal2-container).swal2-top-end>.swal2-popup,div:where(.swal2-container).swal2-top-right>.swal2-popup{grid-column:3;place-self:start end}div:where(.swal2-container).swal2-center-start>.swal2-popup,div:where(.swal2-container).swal2-center-left>.swal2-popup{grid-row:2;align-self:center}div:where(.swal2-container).swal2-center>.swal2-popup{grid-column:2;grid-row:2;place-self:center center}div:where(.swal2-container).swal2-center-end>.swal2-popup,div:where(.swal2-container).swal2-center-right>.swal2-popup{grid-column:3;grid-row:2;place-self:center end}div:where(.swal2-container).swal2-bottom-start>.swal2-popup,div:where(.swal2-container).swal2-bottom-left>.swal2-popup{grid-column:1;grid-row:3;align-self:end}div:where(.swal2-container).swal2-bottom>.swal2-popup{grid-column:2;grid-row:3;place-self:end center}div:where(.swal2-container).swal2-bottom-end>.swal2-popup,div:where(.swal2-container).swal2-bottom-right>.swal2-popup{grid-column:3;grid-row:3;place-self:end end}div:where(.swal2-container).swal2-grow-row>.swal2-popup,div:where(.swal2-container).swal2-grow-fullscreen>.swal2-popup{grid-column:1/4;width:100%}div:where(.swal2-container).swal2-grow-column>.swal2-popup,div:where(.swal2-container).swal2-grow-fullscreen>.swal2-popup{grid-row:1/4;align-self:stretch}div:where(.swal2-container).swal2-no-transition{transition:none !important}div:where(.swal2-container) div:where(.swal2-popup){display:none;position:relative;box-sizing:border-box;grid-template-columns:minmax(0, 100%);width:32em;max-width:100%;padding:0 0 1.25em;border:none;border-radius:5px;background:#fff;color:#545454;font-family:inherit;font-size:1rem}div:where(.swal2-container) div:where(.swal2-popup):focus{outline:none}div:where(.swal2-container) div:where(.swal2-popup).swal2-loading{overflow-y:hidden}div:where(.swal2-container) div:where(.swal2-popup).swal2-draggable{cursor:grab}div:where(.swal2-container) div:where(.swal2-popup).swal2-draggable div:where(.swal2-icon){cursor:grab}div:where(.swal2-container) div:where(.swal2-popup).swal2-dragging{cursor:grabbing}div:where(.swal2-container) div:where(.swal2-popup).swal2-dragging div:where(.swal2-icon){cursor:grabbing}div:where(.swal2-container) h2:where(.swal2-title){position:relative;max-width:100%;margin:0;padding:.8em 1em 0;color:inherit;font-size:1.875em;font-weight:600;text-align:center;text-transform:none;word-wrap:break-word;cursor:initial}div:where(.swal2-container) div:where(.swal2-actions){display:flex;z-index:1;box-sizing:border-box;flex-wrap:wrap;align-items:center;justify-content:center;width:auto;margin:1.25em auto 0;padding:0}div:where(.swal2-container) div:where(.swal2-actions):not(.swal2-loading) .swal2-styled[disabled]{opacity:.4}div:where(.swal2-container) div:where(.swal2-actions):not(.swal2-loading) .swal2-styled:hover{background-image:linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1))}div:where(.swal2-container) div:where(.swal2-actions):not(.swal2-loading) .swal2-styled:active{background-image:linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2))}div:where(.swal2-container) div:where(.swal2-loader){display:none;align-items:center;justify-content:center;width:2.2em;height:2.2em;margin:0 1.875em;animation:swal2-rotate-loading 1.5s linear 0s infinite normal;border-width:.25em;border-style:solid;border-radius:100%;border-color:#2778c4 rgba(0,0,0,0) #2778c4 rgba(0,0,0,0)}div:where(.swal2-container) button:where(.swal2-styled){margin:.3125em;padding:.625em 1.1em;transition:box-shadow .1s;box-shadow:0 0 0 3px rgba(0,0,0,0);font-weight:500}div:where(.swal2-container) button:where(.swal2-styled):not([disabled]){cursor:pointer}div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm){border:0;border-radius:.25em;background:initial;background-color:#7066e0;color:#fff;font-size:1em}div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm):focus-visible{box-shadow:0 0 0 3px rgba(112,102,224,.5)}div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-deny){border:0;border-radius:.25em;background:initial;background-color:#dc3741;color:#fff;font-size:1em}div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-deny):focus-visible{box-shadow:0 0 0 3px rgba(220,55,65,.5)}div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-cancel){border:0;border-radius:.25em;background:initial;background-color:#6e7881;color:#fff;font-size:1em}div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-cancel):focus-visible{box-shadow:0 0 0 3px rgba(110,120,129,.5)}div:where(.swal2-container) button:where(.swal2-styled).swal2-default-outline:focus-visible{box-shadow:0 0 0 3px rgba(100,150,200,.5)}div:where(.swal2-container) button:where(.swal2-styled):focus-visible{outline:none}div:where(.swal2-container) button:where(.swal2-styled)::-moz-focus-inner{border:0}div:where(.swal2-container) div:where(.swal2-footer){margin:1em 0 0;padding:1em 1em 0;border-top:1px solid #eee;color:inherit;font-size:1em;text-align:center;cursor:initial}div:where(.swal2-container) .swal2-timer-progress-bar-container{position:absolute;right:0;bottom:0;left:0;grid-column:auto !important;overflow:hidden;border-bottom-right-radius:5px;border-bottom-left-radius:5px}div:where(.swal2-container) div:where(.swal2-timer-progress-bar){width:100%;height:.25em;background:rgba(0,0,0,.2)}div:where(.swal2-container) img:where(.swal2-image){max-width:100%;margin:2em auto 1em;cursor:initial}div:where(.swal2-container) button:where(.swal2-close){z-index:2;align-items:center;justify-content:center;width:1.2em;height:1.2em;margin-top:0;margin-right:0;margin-bottom:-1.2em;padding:0;overflow:hidden;transition:color .1s,box-shadow .1s;border:none;border-radius:5px;background:rgba(0,0,0,0);color:#ccc;font-family:monospace;font-size:2.5em;cursor:pointer;justify-self:end}div:where(.swal2-container) button:where(.swal2-close):hover{transform:none;background:rgba(0,0,0,0);color:#f27474}div:where(.swal2-container) button:where(.swal2-close):focus-visible{outline:none;box-shadow:inset 0 0 0 3px rgba(100,150,200,.5)}div:where(.swal2-container) button:where(.swal2-close)::-moz-focus-inner{border:0}div:where(.swal2-container) div:where(.swal2-html-container){z-index:1;justify-content:center;margin:0;padding:1em 1.6em .3em;overflow:auto;color:inherit;font-size:1.125em;font-weight:normal;line-height:normal;text-align:center;word-wrap:break-word;word-break:break-word;cursor:initial}div:where(.swal2-container) input:where(.swal2-input),div:where(.swal2-container) input:where(.swal2-file),div:where(.swal2-container) textarea:where(.swal2-textarea),div:where(.swal2-container) select:where(.swal2-select),div:where(.swal2-container) div:where(.swal2-radio),div:where(.swal2-container) label:where(.swal2-checkbox){margin:1em 2em 3px}div:where(.swal2-container) input:where(.swal2-input),div:where(.swal2-container) input:where(.swal2-file),div:where(.swal2-container) textarea:where(.swal2-textarea){box-sizing:border-box;width:auto;transition:border-color .1s,box-shadow .1s;border:1px solid #d9d9d9;border-radius:.1875em;background:rgba(0,0,0,0);box-shadow:inset 0 1px 1px rgba(0,0,0,.06),0 0 0 3px rgba(0,0,0,0);color:inherit;font-size:1.125em}div:where(.swal2-container) input:where(.swal2-input).swal2-inputerror,div:where(.swal2-container) input:where(.swal2-file).swal2-inputerror,div:where(.swal2-container) textarea:where(.swal2-textarea).swal2-inputerror{border-color:#f27474 !important;box-shadow:0 0 2px #f27474 !important}div:where(.swal2-container) input:where(.swal2-input):focus,div:where(.swal2-container) input:where(.swal2-file):focus,div:where(.swal2-container) textarea:where(.swal2-textarea):focus{border:1px solid #b4dbed;outline:none;box-shadow:inset 0 1px 1px rgba(0,0,0,.06),0 0 0 3px rgba(100,150,200,.5)}div:where(.swal2-container) input:where(.swal2-input)::placeholder,div:where(.swal2-container) input:where(.swal2-file)::placeholder,div:where(.swal2-container) textarea:where(.swal2-textarea)::placeholder{color:#ccc}div:where(.swal2-container) .swal2-range{margin:1em 2em 3px;background:#fff}div:where(.swal2-container) .swal2-range input{width:80%}div:where(.swal2-container) .swal2-range output{width:20%;color:inherit;font-weight:600;text-align:center}div:where(.swal2-container) .swal2-range input,div:where(.swal2-container) .swal2-range output{height:2.625em;padding:0;font-size:1.125em;line-height:2.625em}div:where(.swal2-container) .swal2-input{height:2.625em;padding:0 .75em}div:where(.swal2-container) .swal2-file{width:75%;margin-right:auto;margin-left:auto;background:rgba(0,0,0,0);font-size:1.125em}div:where(.swal2-container) .swal2-textarea{height:6.75em;padding:.75em}div:where(.swal2-container) .swal2-select{min-width:50%;max-width:100%;padding:.375em .625em;background:rgba(0,0,0,0);color:inherit;font-size:1.125em}div:where(.swal2-container) .swal2-radio,div:where(.swal2-container) .swal2-checkbox{align-items:center;justify-content:center;background:#fff;color:inherit}div:where(.swal2-container) .swal2-radio label,div:where(.swal2-container) .swal2-checkbox label{margin:0 .6em;font-size:1.125em}div:where(.swal2-container) .swal2-radio input,div:where(.swal2-container) .swal2-checkbox input{flex-shrink:0;margin:0 .4em}div:where(.swal2-container) label:where(.swal2-input-label){display:flex;justify-content:center;margin:1em auto 0}div:where(.swal2-container) div:where(.swal2-validation-message){align-items:center;justify-content:center;margin:1em 0 0;padding:.625em;overflow:hidden;background:#f0f0f0;color:#666;font-size:1em;font-weight:300}div:where(.swal2-container) div:where(.swal2-validation-message)::before{content:"!";display:inline-block;width:1.5em;min-width:1.5em;height:1.5em;margin:0 .625em;border-radius:50%;background-color:#f27474;color:#fff;font-weight:600;line-height:1.5em;text-align:center}div:where(.swal2-container) .swal2-progress-steps{flex-wrap:wrap;align-items:center;max-width:100%;margin:1.25em auto;padding:0;background:rgba(0,0,0,0);font-weight:600}div:where(.swal2-container) .swal2-progress-steps li{display:inline-block;position:relative}div:where(.swal2-container) .swal2-progress-steps .swal2-progress-step{z-index:20;flex-shrink:0;width:2em;height:2em;border-radius:2em;background:#2778c4;color:#fff;line-height:2em;text-align:center}div:where(.swal2-container) .swal2-progress-steps .swal2-progress-step.swal2-active-progress-step{background:#2778c4}div:where(.swal2-container) .swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step{background:#add8e6;color:#fff}div:where(.swal2-container) .swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step-line{background:#add8e6}div:where(.swal2-container) .swal2-progress-steps .swal2-progress-step-line{z-index:10;flex-shrink:0;width:2.5em;height:.4em;margin:0 -1px;background:#2778c4}div:where(.swal2-icon){position:relative;box-sizing:content-box;justify-content:center;width:5em;height:5em;margin:2.5em auto .6em;border:.25em solid rgba(0,0,0,0);border-radius:50%;border-color:#000;font-family:inherit;line-height:5em;cursor:default;user-select:none}div:where(.swal2-icon) .swal2-icon-content{display:flex;align-items:center;font-size:3.75em}div:where(.swal2-icon).swal2-error{border-color:#f27474;color:#f27474}div:where(.swal2-icon).swal2-error .swal2-x-mark{position:relative;flex-grow:1}div:where(.swal2-icon).swal2-error [class^=swal2-x-mark-line]{display:block;position:absolute;top:2.3125em;width:2.9375em;height:.3125em;border-radius:.125em;background-color:#f27474}div:where(.swal2-icon).swal2-error [class^=swal2-x-mark-line][class$=left]{left:1.0625em;transform:rotate(45deg)}div:where(.swal2-icon).swal2-error [class^=swal2-x-mark-line][class$=right]{right:1em;transform:rotate(-45deg)}div:where(.swal2-icon).swal2-error.swal2-icon-show{animation:swal2-animate-error-icon .5s}div:where(.swal2-icon).swal2-error.swal2-icon-show .swal2-x-mark{animation:swal2-animate-error-x-mark .5s}div:where(.swal2-icon).swal2-warning{border-color:#f8bb86;color:#f8bb86}div:where(.swal2-icon).swal2-warning.swal2-icon-show{animation:swal2-animate-error-icon .5s}div:where(.swal2-icon).swal2-warning.swal2-icon-show .swal2-icon-content{animation:swal2-animate-i-mark .5s}div:where(.swal2-icon).swal2-info{border-color:#3fc3ee;color:#3fc3ee}div:where(.swal2-icon).swal2-info.swal2-icon-show{animation:swal2-animate-error-icon .5s}div:where(.swal2-icon).swal2-info.swal2-icon-show .swal2-icon-content{animation:swal2-animate-i-mark .8s}div:where(.swal2-icon).swal2-question{border-color:#87adbd;color:#87adbd}div:where(.swal2-icon).swal2-question.swal2-icon-show{animation:swal2-animate-error-icon .5s}div:where(.swal2-icon).swal2-question.swal2-icon-show .swal2-icon-content{animation:swal2-animate-question-mark .8s}div:where(.swal2-icon).swal2-success{border-color:#a5dc86;color:#a5dc86}div:where(.swal2-icon).swal2-success [class^=swal2-success-circular-line]{position:absolute;width:3.75em;height:7.5em;border-radius:50%}div:where(.swal2-icon).swal2-success [class^=swal2-success-circular-line][class$=left]{top:-0.4375em;left:-2.0635em;transform:rotate(-45deg);transform-origin:3.75em 3.75em;border-radius:7.5em 0 0 7.5em}div:where(.swal2-icon).swal2-success [class^=swal2-success-circular-line][class$=right]{top:-0.6875em;left:1.875em;transform:rotate(-45deg);transform-origin:0 3.75em;border-radius:0 7.5em 7.5em 0}div:where(.swal2-icon).swal2-success .swal2-success-ring{position:absolute;z-index:2;top:-0.25em;left:-0.25em;box-sizing:content-box;width:100%;height:100%;border:.25em solid rgba(165,220,134,.3);border-radius:50%}div:where(.swal2-icon).swal2-success .swal2-success-fix{position:absolute;z-index:1;top:.5em;left:1.625em;width:.4375em;height:5.625em;transform:rotate(-45deg)}div:where(.swal2-icon).swal2-success [class^=swal2-success-line]{display:block;position:absolute;z-index:2;height:.3125em;border-radius:.125em;background-color:#a5dc86}div:where(.swal2-icon).swal2-success [class^=swal2-success-line][class$=tip]{top:2.875em;left:.8125em;width:1.5625em;transform:rotate(45deg)}div:where(.swal2-icon).swal2-success [class^=swal2-success-line][class$=long]{top:2.375em;right:.5em;width:2.9375em;transform:rotate(-45deg)}div:where(.swal2-icon).swal2-success.swal2-icon-show .swal2-success-line-tip{animation:swal2-animate-success-line-tip .75s}div:where(.swal2-icon).swal2-success.swal2-icon-show .swal2-success-line-long{animation:swal2-animate-success-line-long .75s}div:where(.swal2-icon).swal2-success.swal2-icon-show .swal2-success-circular-line-right{animation:swal2-rotate-success-circular-line 4.25s ease-in}[class^=swal2]{-webkit-tap-highlight-color:rgba(0,0,0,0)}.swal2-show{animation:swal2-show .3s}.swal2-hide{animation:swal2-hide .15s forwards}.swal2-noanimation{transition:none}.swal2-scrollbar-measure{position:absolute;top:-9999px;width:50px;height:50px;overflow:scroll}.swal2-rtl .swal2-close{margin-right:initial;margin-left:0}.swal2-rtl .swal2-timer-progress-bar{right:0;left:auto}.swal2-toast{box-sizing:border-box;grid-column:1/4 !important;grid-row:1/4 !important;grid-template-columns:min-content auto min-content;padding:1em;overflow-y:hidden;background:#fff;box-shadow:0 0 1px rgba(0,0,0,.075),0 1px 2px rgba(0,0,0,.075),1px 2px 4px rgba(0,0,0,.075),1px 3px 8px rgba(0,0,0,.075),2px 4px 16px rgba(0,0,0,.075);pointer-events:all}.swal2-toast>*{grid-column:2}.swal2-toast h2:where(.swal2-title){margin:.5em 1em;padding:0;font-size:1em;text-align:initial}.swal2-toast .swal2-loading{justify-content:center}.swal2-toast input:where(.swal2-input){height:2em;margin:.5em;font-size:1em}.swal2-toast .swal2-validation-message{font-size:1em}.swal2-toast div:where(.swal2-footer){margin:.5em 0 0;padding:.5em 0 0;font-size:.8em}.swal2-toast button:where(.swal2-close){grid-column:3/3;grid-row:1/99;align-self:center;width:.8em;height:.8em;margin:0;font-size:2em}.swal2-toast div:where(.swal2-html-container){margin:.5em 1em;padding:0;overflow:initial;font-size:1em;text-align:initial}.swal2-toast div:where(.swal2-html-container):empty{padding:0}.swal2-toast .swal2-loader{grid-column:1;grid-row:1/99;align-self:center;width:2em;height:2em;margin:.25em}.swal2-toast .swal2-icon{grid-column:1;grid-row:1/99;align-self:center;width:2em;min-width:2em;height:2em;margin:0 .5em 0 0}.swal2-toast .swal2-icon .swal2-icon-content{display:flex;align-items:center;font-size:1.8em;font-weight:bold}.swal2-toast .swal2-icon.swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line]{top:.875em;width:1.375em}.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:.3125em}.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:.3125em}.swal2-toast div:where(.swal2-actions){justify-content:flex-start;height:auto;margin:0;margin-top:.5em;padding:0 .5em}.swal2-toast button:where(.swal2-styled){margin:.25em .5em;padding:.4em .6em;font-size:1em}.swal2-toast .swal2-success{border-color:#a5dc86}.swal2-toast .swal2-success [class^=swal2-success-circular-line]{position:absolute;width:1.6em;height:3em;border-radius:50%}.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=left]{top:-0.8em;left:-0.5em;transform:rotate(-45deg);transform-origin:2em 2em;border-radius:4em 0 0 4em}.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=right]{top:-0.25em;left:.9375em;transform-origin:0 1.5em;border-radius:0 4em 4em 0}.swal2-toast .swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-toast .swal2-success .swal2-success-fix{top:0;left:.4375em;width:.4375em;height:2.6875em}.swal2-toast .swal2-success [class^=swal2-success-line]{height:.3125em}.swal2-toast .swal2-success [class^=swal2-success-line][class$=tip]{top:1.125em;left:.1875em;width:.75em}.swal2-toast .swal2-success [class^=swal2-success-line][class$=long]{top:.9375em;right:.1875em;width:1.375em}.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-tip{animation:swal2-toast-animate-success-line-tip .75s}.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-long{animation:swal2-toast-animate-success-line-long .75s}.swal2-toast.swal2-show{animation:swal2-toast-show .5s}.swal2-toast.swal2-hide{animation:swal2-toast-hide .1s forwards}@keyframes swal2-show{0%{transform:scale(0.7)}45%{transform:scale(1.05)}80%{transform:scale(0.95)}100%{transform:scale(1)}}@keyframes swal2-hide{0%{transform:scale(1);opacity:1}100%{transform:scale(0.5);opacity:0}}@keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-0.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.8125em;width:1.5625em}}@keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@keyframes swal2-rotate-success-circular-line{0%{transform:rotate(-45deg)}5%{transform:rotate(-45deg)}12%{transform:rotate(-405deg)}100%{transform:rotate(-405deg)}}@keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;transform:scale(0.4);opacity:0}50%{margin-top:1.625em;transform:scale(0.4);opacity:0}80%{margin-top:-0.375em;transform:scale(1.15)}100%{margin-top:0;transform:scale(1);opacity:1}}@keyframes swal2-animate-error-icon{0%{transform:rotateX(100deg);opacity:0}100%{transform:rotateX(0deg);opacity:1}}@keyframes swal2-rotate-loading{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}@keyframes swal2-animate-question-mark{0%{transform:rotateY(-360deg)}100%{transform:rotateY(0)}}@keyframes swal2-animate-i-mark{0%{transform:rotateZ(45deg);opacity:0}25%{transform:rotateZ(-25deg);opacity:.4}50%{transform:rotateZ(15deg);opacity:.8}75%{transform:rotateZ(-5deg);opacity:1}100%{transform:rotateX(0);opacity:1}}@keyframes swal2-toast-show{0%{transform:translateY(-0.625em) rotateZ(2deg)}33%{transform:translateY(0) rotateZ(-2deg)}66%{transform:translateY(0.3125em) rotateZ(2deg)}100%{transform:translateY(0) rotateZ(0deg)}}@keyframes swal2-toast-hide{100%{transform:rotateZ(1deg);opacity:0}}@keyframes swal2-toast-animate-success-line-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-0.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@keyframes swal2-toast-animate-success-line-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}</style></head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background: var(--warna_4);">
+        <div class="container">
+            <a class="navbar-brand" href="https://bonjezhack.my.id">
+                <img src="/assets/1705673732_98608d2623a3f94467a3.png" alt="" width="170">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0 menu-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://t.me/JUALBELI"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>Join Telegram Channel</a>
+                    </li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="content">
+                <div class="mb-4">
+            <div class="container">
+                <div class="owl-carousel owl-theme owl-banner owl-loaded owl-drag">
+                                        
+                                        
+                                    <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all; width: 984px;"><div class="owl-item active" style="width: 482px; margin-right: 10px;"><div class="item">
+                        <img src="/assets/images/banner/1715476217_6de9c5e25f1a76a550d2.jpg" alt="" width="100%" class="mt-4 rounded" style="box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);">
+                    </div></div><div class="owl-item" style="width: 482px; margin-right: 10px;"><div class="item">
+                        <img src="/assets/images/banner/1715476210_75cd92e067744eabd9e7.jpg" alt="" width="100%" class="mt-4 rounded" style="box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);">
+                    </div></div></div></div><div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div><div class="owl-dots"><button role="button" class="owl-dot active"><span></span></button><button role="button" class="owl-dot"><span></span></button></div></div>
+            </div>
+        </div>
+
+                <div class="container">
+            <div class="mb-4">
+                <div class="running-text-box">
+                    <marquee>SELAMAT DATANG DI HMEISEVEN STORE | MENYEDIAKAN JUAK BELI AKUN GAME</marquee>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="container">
+            <h1 class="eniv-games-populer-title"><span class="text-white">POPULER</span>
+            </h1>
+            <div class="row">
+            </div>
+        </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <form class="mb-3" id="searchForm">
+                    <div class="input-group">
+                        <input class="form-control" type="search" placeholder="Mau cari apa?" id="searchInput" autocomplete="off">
+                        <button class="btn btn-primary" type="button" id="searchButton">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search" style="width: 18px;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+                <div class="col-md-8">
+                    <div class="mb-3 category-container">
+                                                <a id="category-top-up-game" class="category active" onclick="select_tipe('top-up-game');">
+                            <!-- <img src="/assets/tipe/1680003663_2f356edd683dcbee4a74.png" alt="" width="52" class="rounded-3"> -->
+                            MENU UTAMA                       </a>
+                                                <a id="category-pubg" class="category " onclick="select_tipe('pubg');">
+                            <!-- <img src="/assets/tipe/1708007534_ff33962dde20100a5dc0.jpg" alt="" width="52" class="rounded-3"> -->
+                            PUBG                        </a>
+                                                <a id="category-mlbb" class="category " onclick="select_tipe('mlbb');">
+                            <!-- <img src="/assets/tipe/1708007396_5ddb89561ae4931ba7f3.jpg" alt="" width="52" class="rounded-3"> -->
+                            MLBB                        </a>
+                                                <a id="category-codm" class="category " onclick="select_tipe('codm');">
+                            <!-- <img src="/assets/tipe/1708007765_1b2cb64bbf6b5367e42e.jpg" alt="" width="52" class="rounded-3"> -->
+                            FREE FIRE
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                                <style>
+                    .card-games {
+
+                    }
+                    .card-games .content {
+                        background: var(--warna_4);
+                        margin-top: -22px;
+                        min-height: 94px;
+                        padding: 12px;
+                        position: relative;
+                    }
+                    .card-games .content .text-center {
+                        font-size: 13px;
+                        font-weight: 500;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                    }
+                    .card-games .content i {
+                        font-size: 12px;
+                    }
+                    .card-games .content span {
+                        font-size: 12px;
+                        color: #d8ddfb;
+                        font-weight: 500;
+                        position: absolute;
+                        bottom: 12px;
+                    }
+                    .card-games .content span i {
+                        margin-right: 6px;
+                    }
+                    .ld {
+                        padding: 0 10px 12px 10px;
+                        background: var(--warna_2);
+                        border-radius: 0 0 8px 8px;
+                    }
+                    .ld a {
+                        text-decoration: none;
+                        color: #fff;
+                        font-size: 12px;
+                        background: #e64848;
+                        display: block;
+                        padding: 4px;
+                        text-align: center;
+                        border-radius: 4px;
+                    }
+                    .ld a i {
+                        margin-right: 4px;
+                    }
+                    @media screen AND (max-width: 460px) {
+                        .row-g {
+                            padding: 0 8px;
+                        }
+                        .col-g {
+                            padding: 0 6px;
+                        }
+                    }
+                </style>
+              <div class="col-md-12">
+                <div class="all-category-games" id="tipe-top-up-game">
+                    <div class="mb-3">
+                        <h5 class="fs-16 fw-semibold mb-3">Best Seller</h5>
+                        <div class="row mb-4 row-g" id="gameList">
+                            <div class="col-md-2 col-4 col-g" data-name="Mobile Legends">
+                                <div class="mb-4">
+                                    <a href="/ml.html" class="text-decoration-none card-games d-block">
+                                        <img src="/assets/games/1677170519_a0abf6a57ac3acc0d789.png" alt="" class="w-100 rounded-top">
+                                        <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                        <div class="content">
+                                            <div class="text-center">Mobile Legends</div>
+                                            <span><i class="fa fa-shopping-basket"></i> 0 Terjual</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-2 col-4 col-g" data-name="Free Fire">
+                                <div class="mb-4">
+                                    <a href="/ff.html" class="text-decoration-none card-games d-block">
+                                        <img src="/assets/games/1677170519_a0abf6a57ac3acc0d789.jpg" alt="" class="w-100 rounded-top">
+                                        <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                        <div class="content">
+                                            <div class="text-center">Free Fire</div>
+                                            <span><i class="fa fa-shopping-basket"></i> 0 Terjual</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-4 col-g" data-name="PUBG Mobile">
+                                <div class="mb-4">
+                                    <a href="pubg.html" class="text-decoration-none card-games d-block">
+                                        <img src="/assets/games/1677165308_20e1a0cedbae09659a3b.png" alt="" class="w-100 rounded-top">
+                                        <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                        <div class="content">
+                                            <div class="text-center">PUBG Mobile</div>
+                                            <span><i class="fa fa-shopping-basket"></i> 28 Terjual</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="not-found" id="notFound" style="display: none;">Item tidak ditemukan.</div>
+                        </div>
+                        <script>
+                            document.getElementById('searchInput').addEventListener('input', function () {
+                                const query = this.value.toLowerCase();
+                                const games = document.querySelectorAll('#gameList .col-g');
+                                let hasResult = false;
+                    
+                                games.forEach(game => {
+                                    const gameName = game.getAttribute('data-name').toLowerCase();
+                                    if (gameName.includes(query)) {
+                                        game.style.display = 'block';
+                                        hasResult = true;
+                                    } else {
+                                        game.style.display = 'none';
+                                    }
+                                });
+                    
+                                document.getElementById('notFound').style.display = hasResult ? 'none' : 'block';
+                            });
+                        </script>
+                        <div class="mb-3">
+                            <h5 class="fs-16 fw-semibold mb-3">Lainnya</h5>
+                            <div class="row mb-4 row-g" id="gameList">
+                                <div class="col-md-2 col-4 col-g" data-name="Super sus">
+                                    <div class="mb-4">
+                                        <a href="supersus.html" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1684356093_b7becb0bd4cae8bc393c.png" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">Super sus</div>
+                                                <span><i class="fa fa-shopping-basket"></i>1 Terjual</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-2 col-4 col-g" data-name="Zepeto">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/zepeto" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1684355847_8dde78f4e8a624f6e5d2.png" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">Zepeto</div>
+                                                <span><i class="fa fa-shopping-basket"></i>3 Terjual</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-2 col-4 col-g" data-name="Voucher PB Zepetto">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/voucher-pb-zapetto" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1675772419_235864cbc38bd3a2183b.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">Voucher PB Zepetto</div>
+                                                <span><i class="fa fa-shopping-basket"></i>0 Terjual</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        document.getElementById('searchInput').addEventListener('input', function () {
+                            const query = this.value.toLowerCase();
+                            const games = document.querySelectorAll('#gameList .col-g');
+                
+                            games.forEach(game => {
+                                const gameName = game.getAttribute('data-name').toLowerCase();
+                                if (gameName.includes(query)) {
+                                    game.style.display = 'block';
+                                } else {
+                                    game.style.display = 'none';
+                                }
+                            });
+                        });
+                    </script>
+                    
+                    <div class="all-category-games d-none" id="tipe-pubg">
+                        <div class="mb-3">
+                            <h5 class="fs-16 fw-semibold mb-3">VOUCHER PUBG [ ANDROID ] </h5>
+                            <div class="row mb-4 row-g">
+                                
+                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/pubg-vvip-mods" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1734215352_385a2be509116d244fdf.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">Pubg Vvip Mods</div>
+                                                <span><i class="fa fa-shopping-basket"></i>462 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/VVIP_MODS_OFFICIAL" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/pubg-senju" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1708301706_7a137fd7bc61c0a6d692.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">Pubg Senju</div>
+                                                <span><i class="fa fa-shopping-basket"></i>482 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/Vip_Senju_Official" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/zolo" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1677573524_d86dc2ac713a98132f0d.jpeg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">VOUCHER ZOLO</div>
+                                                <span><i class="fa fa-shopping-basket"></i>764 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/sharp-shooter" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1694695189_6902de840e318f3cbbb9.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">VOUCHER SHIELD</div>
+                                                <span><i class="fa fa-shopping-basket"></i>726 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/king-mod" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1675084183_cf538498e52fba0b8e61.jpeg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">VOUCHER KING MOD</div>
+                                                <span><i class="fa fa-shopping-basket"></i>611 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                            </div>
+                                </div>
+                                                                                            </div>
+                        </div>
+                                                <div class="mb-3">
+                            <h5 class="fs-16 fw-semibold mb-3">VOUCHER PUBG [ IOS ] </h5>
+                            <div class="row mb-4 row-g">
+                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/star-ios-mlbb" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1699543623_f61925eec8660a7ee48e.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">STAR IOS PUBG</div>
+                                                <span><i class="fa fa-shopping-basket"></i>675 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/iosmlbb_monster_zero_star" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/vn-hack" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1693787889_ebb44ca1169e571dc8c7.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">VN-HACK</div>
+                                                <span><i class="fa fa-shopping-basket"></i>741 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/ios-zero" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1675083493_49c4d107bbb6eaa7f9ee.jpeg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">IOS ZERO</div>
+                                                <span><i class="fa fa-shopping-basket"></i>210 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                            </div>
+                                </div>
+                                                                                            </div>
+                        </div>
+                                            </div>
+                                        <div class="all-category-games d-none" id="tipe-mlbb">
+                                                <div class="mb-3">
+                            <h5 class="fs-16 fw-semibold mb-3">VOUCHER MOBILE LEGENDS</h5>
+                            <div class="row mb-4 row-g">
+                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/mr-vip" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1736694192_dcfa61723124035c60f4.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">Dk Web Venture</div>
+                                                <span><i class="fa fa-shopping-basket"></i>5506 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/dkweb_venture" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/monster-ios-mlbb" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1706882854_154669c06433598dd108.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">FLUORITE IOS MLBB</div>
+                                                <span><i class="fa fa-shopping-basket"></i>1548 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/FLUORITE_IOS_OFFICIAL" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/voucher-zona-modz" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1709474848_72abddcdf69458a4848b.jpeg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">Exmods</div>
+                                                <span><i class="fa fa-shopping-basket"></i>10463 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/Exmod_Official" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/voucher-morella-ml" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1719194333_bf88b287da98f76f9c93.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">Morella ML+</div>
+                                                <span><i class="fa fa-shopping-basket"></i>8190 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/Morella_Official" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/morella-room-info" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1719194356_d2d76de561d9ee50f429.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">Morella DK [Room Info]</div>
+                                                <span><i class="fa fa-shopping-basket"></i>4723 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/Morella_Official" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/voucher-pandora-xd" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1697174161_6441845713ba726bcbbe.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">Pandora XD</div>
+                                                <span><i class="fa fa-shopping-basket"></i>4757 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/VIP_PANDORA_OFFICIAL" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/voucher-pandora-room-info" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1721139335_ed944b6a7f182deb8bb4.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">Pandora DK [Room Info]</div>
+                                                <span><i class="fa fa-shopping-basket"></i>4181 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/VIP_PANDORA_OFFICIAL" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/voucher-ml-nusantara-hax" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1691716449_1d290f3d6c2a788f1c5b.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">Senju Premium</div>
+                                                <span><i class="fa fa-shopping-basket"></i>1699 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/vip_senju_official" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/senju-dk-only" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1715864474_bce61450b888d56b5493.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">Senju DK Only</div>
+                                                <span><i class="fa fa-shopping-basket"></i>303 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/Vip_Senju_Official" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/voucher-nui-mod" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1684294973_2b0935420e6ec062ea5b.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">NUI MOD</div>
+                                                <span><i class="fa fa-shopping-basket"></i>5834 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/NuiMod_official" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/voucher-nui-room-info-only" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1693584376_5f413a4320b868b8c5d0.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">Nui Mod DK [Room Info]</div>
+                                                <span><i class="fa fa-shopping-basket"></i>1545 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/NuiMod_official" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/voucher-egn" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1721141880_96259c65f6293401b5ae.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">Attic Premium</div>
+                                                <span><i class="fa fa-shopping-basket"></i>1531 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/VIP_ATTIC_PREMIUM" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/egn-room-info" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1721141913_0451334391a4e479f7e1.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">Attic  Room Info</div>
+                                                <span><i class="fa fa-shopping-basket"></i>999 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/VIP_ATTIC_PREMIUM" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/voucher-senpai-mod" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1717515147_b74f6f52b010a909acd8.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">Voucher Senpai</div>
+                                                <span><i class="fa fa-shopping-basket"></i>367 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/senpai_mod_official" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/voucher-xnn" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1715090632_645ae3f9f49600b335b5.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">Voucher Xfileshack</div>
+                                                <span><i class="fa fa-shopping-basket"></i>337 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/gamestore_vip" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/voucher-star-mlbb" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1717462258_5f28bbb5f39d41b1bf15.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">XYOURZONE</div>
+                                                <span><i class="fa fa-shopping-basket"></i>240 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/xyourzone_official" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/vvip-mods" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1708305017_735180b153807595cae3.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">VVIP MODS</div>
+                                                <span><i class="fa fa-shopping-basket"></i>653 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/VVIP_MODS_OFFICIAL" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/voucher-eijiro" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1709873259_d484e249311a0589fc91.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">IFILESHACK</div>
+                                                <span><i class="fa fa-shopping-basket"></i>691 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/ifileshack_official" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/eijiro-dk-room-info" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1709705915_506ccc050156aa1c1b17.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">IFILESHACK [Room Info]</div>
+                                                <span><i class="fa fa-shopping-basket"></i>252 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/ifileshack_official" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/voucher-vip-rock" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1689547467_62787af4ac301c1a7473.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">Voucher  Fakecez</div>
+                                                <span><i class="fa fa-shopping-basket"></i>437 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/Vip_Fakecez_Official" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/vvip-enjoyers" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1677573980_d35aceb0266a58c3183f.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">Enjoyers</div>
+                                                <span><i class="fa fa-shopping-basket"></i>5130 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/vip_enjoyers_official" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/voucher-chronos" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1701419225_1470025f08b90f220ed8.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">Voucher Chronos</div>
+                                                <span><i class="fa fa-shopping-basket"></i>127 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/chronos_official" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/voucher-play-cheats" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1679184763_d345d96e4d084e665127.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">Voucher  Play Cheats</div>
+                                                <span><i class="fa fa-shopping-basket"></i>370 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/playcheats_official" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/voucher-golden-x-files" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1695562346_369d9a9ad959ab7004dd.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">Voucher Golden X files</div>
+                                                <span><i class="fa fa-shopping-basket"></i>352 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/gamestore_vip" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/golden-room-info" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1695562556_b054b97d2e6167330951.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">Golden Room Info</div>
+                                                <span><i class="fa fa-shopping-basket"></i>218 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/gamestore_vip" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/voucher-kn-mod" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1684294889_d8937961d9926d31e8cb.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">Kuronew</div>
+                                                <span><i class="fa fa-shopping-basket"></i>7112 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/Kuronew_Official" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                            </div>
+                        </div>
+                                            </div>
+                                        <div class="all-category-games d-none" id="tipe-codm">
+                                                <div class="mb-3">
+                            <h5 class="fs-16 fw-semibold mb-3">VOUCHER CODM [ ANDROID ]</h5>
+                            <div class="row mb-4 row-g">
+                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/codm-morella" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1719216870_9ca47e6f6727b02904cf.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">CODM MORELLA</div>
+                                                <span><i class="fa fa-shopping-basket"></i>771 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/Morella_Official" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/codm-vvip-mods" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1708125404_b283bcdff20adc7dbcde.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">CODM VVIP MODS</div>
+                                                <span><i class="fa fa-shopping-basket"></i>541 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/VVIP_MODS_OFFICIAL" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/codm-senju" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1708300758_58d26ce0954f31ae90ee.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">CODM Senju</div>
+                                                <span><i class="fa fa-shopping-basket"></i>531 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/Vip_Senju_Official" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/codm-playcheats" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1704212263_710ea96119fcb759ab49.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">Voucher Arca CODM</div>
+                                                <span><i class="fa fa-shopping-basket"></i>321 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/vip_codm_official" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/xshooter" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1684315476_2b3a10d18c7641d7ceaa.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">Senpai CODM</div>
+                                                <span><i class="fa fa-shopping-basket"></i>215 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/vip_codm_official" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                            </div>
+                        </div>
+                                            </div>
+                                        <div class="all-category-games d-none" id="tipe-aov">
+                                                <div class="mb-3">
+                            <h5 class="fs-16 fw-semibold mb-3">VOUCHER AOV</h5>
+                            <div class="row mb-4 row-g">
+                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/aov-mods" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1708152772_9ee59268eb4d8c84bbb4.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">AOV MODS</div>
+                                                <span><i class="fa fa-shopping-basket"></i>563 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/VVIP_MODS_OFFICIAL" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/aov-senpai" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1686919601_fa1da17d07b3d1fab9c4.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">AOV SENPAI MOD</div>
+                                                <span><i class="fa fa-shopping-basket"></i>264 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/aov-playcheat" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1686937256_4c9e334079a7793e5ae0.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">AOV PLAYCHEAT</div>
+                                                <span><i class="fa fa-shopping-basket"></i>347 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/aov-enjoyers" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1686919457_4e9b33fc87fe9c66cf9e.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">AOV ENJOYERS</div>
+                                                <span><i class="fa fa-shopping-basket"></i>779 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/aov-kuronew" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1707285934_b0772e4cd4b111869b64.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">SENJU AOV</div>
+                                                <span><i class="fa fa-shopping-basket"></i>565 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/HmeiSeven" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                            </div>
+                        </div>
+                                            </div>
+                                        <div class="all-category-games d-none" id="tipe-free-fire">
+                                                <div class="mb-3">
+                            <h5 class="fs-16 fw-semibold mb-3">Voucher Free Fire</h5>
+                            <div class="row mb-4 row-g">
+                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/fluorite-ios-free-fire" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1734019796_121746ee51669e48a408.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">FLUORITE IOS FF</div>
+                                                <span><i class="fa fa-shopping-basket"></i>391 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/FLUORITE_IOS_OFFICIAL" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                            </div>
+                        </div>
+                                            </div>
+                                        <div class="all-category-games d-none" id="tipe-8-ball">
+                                                <div class="mb-3">
+                            <h5 class="fs-16 fw-semibold mb-3">8 BALL POLL</h5>
+                            <div class="row mb-4 row-g">
+                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/8ball-senju" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1712057101_e14a6c68f1a4512876b1.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">8Ball Senju</div>
+                                                <span><i class="fa fa-shopping-basket"></i>213 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/Vip_Senju_Official" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/8-ball-mods" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1708138741_f42ae78070f5369496a4.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">8 BALL MODS</div>
+                                                <span><i class="fa fa-shopping-basket"></i>218 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/VVIP_MODS_OFFICIAL" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/8-ball-poll-psh4x" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1705204513_f85887e34c7c754c3020.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">8BP PSH4X</div>
+                                                <span><i class="fa fa-shopping-basket"></i>570 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/8-ball-pool-easy-victory" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1675167380_9a1d704a84670afea3aa.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">EASY VICTORY</div>
+                                                <span><i class="fa fa-shopping-basket"></i>635 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/8-ball-pool-enjoyers" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1675167134_54b07e4c4c034791a2e4.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">8 BALL POOL ENJOYERS</div>
+                                                <span><i class="fa fa-shopping-basket"></i>378 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                            </div>
+                                </div>
+                                                                                            </div>
+                        </div>
+                                            </div>
+                                        <div class="all-category-games d-none" id="tipe-joki-ml">
+                                                <div class="mb-3">
+                            <h5 class="fs-16 fw-semibold mb-3">Populer</h5>
+                            <div class="row mb-4 row-g">
+                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/joki-mlbb" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1700499002_80c49666d103f1b6a2f4.png" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">JOKI MLBB</div>
+                                                <span><i class="fa fa-shopping-basket"></i>875 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                            </div>
+                                </div>
+                                                                                            </div>
+                        </div>
+                                            </div>
+                                        <div class="all-category-games d-none" id="tipe-game-lainnya">
+                                                <div class="mb-3">
+                            <h5 class="fs-16 fw-semibold mb-3">VOUCHER CONTRA TOURNAMENT</h5>
+                            <div class="row mb-4 row-g">
+                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/contra-mods" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1708151822_0c8d2295e24c00576d4e.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">Contra Mods</div>
+                                                <span><i class="fa fa-shopping-basket"></i>263 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/VVIP_MODS_OFFICIAL" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                            </div>
+                        </div>
+                                                <div class="mb-3">
+                            <h5 class="fs-16 fw-semibold mb-3">VOUCHER LOST SAGA</h5>
+                            <div class="row mb-4 row-g">
+                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/lost-saga-mods" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1708130538_47d957a760eddc4125e4.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">Lost Saga Mods</div>
+                                                <span><i class="fa fa-shopping-basket"></i>463 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/VVIP_MODS_OFFICIAL" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                            </div>
+                        </div>
+                                                <div class="mb-3">
+                            <h5 class="fs-16 fw-semibold mb-3">VOUCHET FORWARD ASSAULT</h5>
+                            <div class="row mb-4 row-g">
+                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/forward-assault-senju" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1708129423_84ac8aadcbd1e50ad807.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">Forward Assault</div>
+                                                <span><i class="fa fa-shopping-basket"></i>682 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/VVIP_MODS_OFFICIAL" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                            </div>
+                        </div>
+                                                <div class="mb-3">
+                            <h5 class="fs-16 fw-semibold mb-3">VOUCHER FARLIGHT 84</h5>
+                            <div class="row mb-4 row-g">
+                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/farlight84" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1708017587_d86b8237f364c6caf6d4.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">Farlight84 Senju</div>
+                                                <span><i class="fa fa-shopping-basket"></i>257 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/Vip_Senju_Official" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/farlight84-vvip-mods" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1708128012_fd558e1a94757b1c7d06.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">Farlight84 VVIP MODS</div>
+                                                <span><i class="fa fa-shopping-basket"></i>546 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/VVIP_MODS_OFFICIAL" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                            </div>
+                        </div>
+                                                <div class="mb-3">
+                            <h5 class="fs-16 fw-semibold mb-3">VOUCHER SUPER SUS</h5>
+                            <div class="row mb-4 row-g">
+                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/senju-supersus" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1707366780_8eeda21a0e3f0f93fe41.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">Senju Supersus</div>
+                                                <span><i class="fa fa-shopping-basket"></i>124 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/Vip_Senju_Official" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                            </div>
+                        </div>
+                                                <div class="mb-3">
+                            <h5 class="fs-16 fw-semibold mb-3">VOUCHER POINT BLANK</h5>
+                            <div class="row mb-4 row-g">
+                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/pb-vvip-mods" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1708419397_856799c50e8b5a80dd54.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">PB VVIP MODS</div>
+                                                <span><i class="fa fa-shopping-basket"></i>443 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/VVIP_MODS_OFFICIAL" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/point-blank-enjoyers" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1675167008_d3674d4f8b7b744add01.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">POINT BLANK ENJOYERS</div>
+                                                <span><i class="fa fa-shopping-basket"></i>159 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                            </div>
+                                </div>
+                                                                                            </div>
+                        </div>
+                                            </div>
+                                        <div class="all-category-games d-none" id="tipe-hok">
+                                                <div class="mb-3">
+                            <h5 class="fs-16 fw-semibold mb-3">Honor Of King</h5>
+                            <div class="row mb-4 row-g">
+                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/hok-vvip-mods" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1722681369_cb82089ec10cd42e4f53.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">Hok Vvip Mods</div>
+                                                <span><i class="fa fa-shopping-basket"></i>365 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/VVIP_MODS_OFFICIAL" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/hok-senpai" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1721141722_2c7407d08007ff80dc36.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">Hok Senpai</div>
+                                                <span><i class="fa fa-shopping-basket"></i>235 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/senpai_mod_official" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                                                                <div class="col-md-2 col-4 col-g">
+                                    <div class="mb-4">
+                                        <a href="https://bonjezhack.my.id/games/senju-victory" class="text-decoration-none card-games d-block">
+                                            <img src="/assets/games/1715864401_3844722dddf6afd3e914.jpg" alt="" class="w-100 rounded-top">
+                                            <img src="/assets/waves.svg" alt="" class="w-100" style="margin-top: -32px;">
+                                            <div class="content">
+                                                <div class="text-center">HOK SENJU</div>
+                                                <span><i class="fa fa-shopping-basket"></i>381 Terjual</span>
+                                            </div>
+                                        </a>
+                                                                                <div class="ld">
+                                            <a href="https://t.me/Vip_Senju_Official" target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        </div>
+                                                                            </div>
+                                </div>
+                                                                                            </div>
+                        </div>
+                                            </div>
+                                    </div>
+                            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h5 class="mt-4 mb-3"></h5>
+                    <div class="row">
+                                                <div class="col-md-4">
+                            <div class="card border-0 rounded-5 mb-3">
+                                <div class="card-body text-center rounded-4" style="background: var(--warna_4);">
+                                    <img src="/assets/1661154884_7abe4dd0026ce45b3e96.png" alt="" width="50" class="mb-3 mt-2">
+                                    <h5 class="mb-2">Harga Paling Murah</h5>
+                                    <p>Temukan banyak pilihan voucher game favoritmu dengan harga termurah</p>
+                                </div>
+                            </div>
+                        </div>
+                                                <div class="col-md-4">
+                            <div class="card border-0 rounded-5 mb-3">
+                                <div class="card-body text-center rounded-4" style="background: var(--warna_4);">
+                                    <img src="/assets/1661154884_32a2a632979ca564ffb5.png" alt="" width="50" class="mb-3 mt-2">
+                                    <h5 class="mb-2">Proses Otomatis 24 Jam</h5>
+                                    <p>Proses Pembelian Cepat, Mudah, Aman dan Terpercaya</p>
+                                </div>
+                            </div>
+                        </div>
+                                                <div class="col-md-4">
+                            <div class="card border-0 rounded-5 mb-3">
+                                <div class="card-body text-center rounded-4" style="background: var(--warna_4);">
+                                    <img src="/assets/1661154884_a499bbc2f615130ccc65.png" alt="" width="50" class="mb-3 mt-2">
+                                    <h5 class="mb-2">Metode Pembayaran Lengkap</h5>
+                                    <p>Terdapat pilihan pembayaran apapun tanpa perlu khawatir untuk transaksi voucher game</p>
+                                </div>
+                            </div>
+                        </div>
+                                            </div>
+                </div>
+            </div>
+        </div>
+            </section>
+
+    <section id="footer">
+        <div class="container">
+
+
+
+            <div class="p-4 rounded-3 mb-4" style="background: var(--warna_4);"> 
+                <div class="row">
+                    <div class="col-md-7">
+                        <img src="/assets/1705673732_98608d2623a3f94467a3.png" alt="" width="176px" class="mb-3">
+                        <h5> HmeiSeven</h5>
+                        <p class="fs-14">
+                            HmeiSeven  adalah sebuah panel penyedia layanan jual beli akun games terbaik #1 Indonesia, dengan harga termurah dan proses super instan.                         </p>
+                        <div class="sosmed mb-3">
+                                                        <a href="https://t.me/HmeiSeven" target="_blank">
+                                <img src="/assets/sosmed/1694565892_6066fc43d2f084b6464d.png" alt="">
+                                <span>Telegram</span>
+                            </a>
+                                                        <a href="https://wa.me/6283831054299" target="_blank">
+                                <img src="/assets/sosmed/1694152734_15d350994cb8350a2fed.png" alt="">
+                                <span>Whatsapp</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-5 ">
+                        <div class="mb-4">
+                            <h6>Games Populer</h6>
+                            <div class="owl-carousel metode-top owl-theme owl-loaded owl-drag">
+                                                                
+                                                                
+                                                                
+                                                                
+                                                                
+                                                            <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-592px, 0px, 0px); transition: 0.25s; width: 1628px;"><div class="owl-item cloned" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode" style="width: 94px;height: 55px;background-image: url(/assets/games/populer/mobile-legend.png);background-size: cover;background-position: center center;">
+                                    </div>
+                                </div></div><div class="owl-item cloned" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode" style="width: 94px;height: 55px;background-image: url(/assets/games/populer/pubg.png);background-size: cover;background-position: center center;">
+                                    </div>
+                                </div></div><div class="owl-item cloned" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode" style="width: 94px;height: 55px;background-image: url(/assets/games/populer/valorant.png);background-size: cover;background-position: center center;">
+                                    </div>
+                                </div></div><div class="owl-item" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode" style="width: 94px;height: 55px;background-image: url(/assets/games/populer/cod.png);background-size: cover;background-position: center center;">
+                                    </div>
+                                </div></div><div class="owl-item active" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode" style="width: 94px;height: 55px;background-image: url(/assets/games/populer/free-fire.png);background-size: cover;background-position: center center;">
+                                    </div>
+                                </div></div><div class="owl-item active" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode" style="width: 94px;height: 55px;background-image: url(/assets/games/populer/mobile-legend.png);background-size: cover;background-position: center center;">
+                                    </div>
+                                </div></div><div class="owl-item active" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode" style="width: 94px;height: 55px;background-image: url(/assets/games/populer/pubg.png);background-size: cover;background-position: center center;">
+                                    </div>
+                                </div></div><div class="owl-item" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode" style="width: 94px;height: 55px;background-image: url(/assets/games/populer/valorant.png);background-size: cover;background-position: center center;">
+                                    </div>
+                                </div></div><div class="owl-item cloned" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode" style="width: 94px;height: 55px;background-image: url(/assets/games/populer/cod.png);background-size: cover;background-position: center center;">
+                                    </div>
+                                </div></div><div class="owl-item cloned" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode" style="width: 94px;height: 55px;background-image: url(/assets/games/populer/free-fire.png);background-size: cover;background-position: center center;">
+                                    </div>
+                                </div></div><div class="owl-item cloned" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode" style="width: 94px;height: 55px;background-image: url(/assets/games/populer/mobile-legend.png);background-size: cover;background-position: center center;">
+                                    </div>
+                                </div></div></div></div><div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div><div class="owl-dots"><button role="button" class="owl-dot active"><span></span></button><button role="button" class="owl-dot"><span></span></button></div></div>
+                        </div>
+                        <div class="mb-2">
+                            <h6>Metode Pembayaran</h6>
+                            <div class="owl-carousel metode-top owl-theme owl-loaded owl-drag">
+                                                            <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-2812px, 0px, 0px); transition: 0.25s; width: 7548px;"><div class="owl-item cloned" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679932456_e9c451ffb017e5c4fa4d.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item cloned" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679932436_a77f7d0ac3a916ff461a.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item cloned" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679932231_770d263c84ec6700ed37.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item cloned" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679932102_0745e829592d3c68de8c.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item cloned" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679932006_6b94fdaefeb774d56afc.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item cloned" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679931857_71fb55b04ae613ffd74a.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item cloned" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679931656_2da56bf19f3efa662a05.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item cloned" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1695080371_6c6c1832c1d043aa566c.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item cloned" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679931495_99370c32557de585ca4d.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item cloned" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1680105275_6fd68cdf50756d1b4dfe.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item cloned" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679931336_187e7a4865c742abf03a.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item cloned" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1676771659_4dc17c73d6fb4ba3cf16.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item cloned" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1677511007_7a538374600196badf74.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1736753546_054d8c2589af4bb505e7.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1695080183_234cac257cbcf7d5973a.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679934587_36048696d2ed4d1e15f6.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679934548_d7625b0f1f9271ceec7c.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679934494_f0200177bb7d4f6b2398.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679933189_a373045ca8703eabbcef.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item active" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679933034_f008b76c835c357aac74.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item active" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679932893_e13d902996c1293a434c.jpeg" alt="">
+                                    </div>
+                                </div></div><div class="owl-item active" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679932867_8d779ce7e8a2c6e0594f.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679932692_629acc7c6ed9a6ab8f85.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679932655_1320ad30f5f3c0b27b3b.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679932562_3f2f0c2884f9d8637ebc.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679932456_e9c451ffb017e5c4fa4d.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679932436_a77f7d0ac3a916ff461a.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679932231_770d263c84ec6700ed37.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679932102_0745e829592d3c68de8c.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679932006_6b94fdaefeb774d56afc.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679931857_71fb55b04ae613ffd74a.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679931656_2da56bf19f3efa662a05.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1695080371_6c6c1832c1d043aa566c.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679931495_99370c32557de585ca4d.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679931336_187e7a4865c742abf03a.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1676771659_4dc17c73d6fb4ba3cf16.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1677511007_7a538374600196badf74.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item cloned" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1736753546_054d8c2589af4bb505e7.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item cloned" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1695080183_234cac257cbcf7d5973a.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item cloned" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679934587_36048696d2ed4d1e15f6.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item cloned" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679934548_d7625b0f1f9271ceec7c.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item cloned" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679934494_f0200177bb7d4f6b2398.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item cloned" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679933189_a373045ca8703eabbcef.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item cloned" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679933034_f008b76c835c357aac74.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item cloned" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679932893_e13d902996c1293a434c.jpeg" alt="">
+                                    </div>
+                                </div></div><div class="owl-item cloned" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679932867_8d779ce7e8a2c6e0594f.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item cloned" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679932692_629acc7c6ed9a6ab8f85.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item cloned" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679932655_1320ad30f5f3c0b27b3b.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item cloned" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679932562_3f2f0c2884f9d8637ebc.png" alt="">
+                                    </div>
+                                </div></div><div class="owl-item cloned" style="width: 138px; margin-right: 10px;"><div class="item">
+                                    <div class="metode">
+                                        <img src="/assets/metode/1679932456_e9c451ffb017e5c4fa4d.png" alt="">
+                                    </div>
+                                </div></div></div></div><div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div><div class="owl-dots"><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot active"><span></span></button><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button></div></div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="float-end">
+                    <!-- <a class="text-white text-decoration-none mx-1 fs-13" href="https://bonjezhack.my.id/bantuan">Bantuan</a>
+                    <a class="text-white text-decoration-none mx-1 fs-13" href="https://bonjezhack.my.id/pertanyaan-umum">Pertanyaan Umum</a>
+                    <a class="text-white text-decoration-none mx-1 fs-13" href="https://bonjezhack.my.id/kebijakan-privasi">Kebijakan Privasi</a>
+                    <a class="text-white text-decoration-none mx-1 fs-13" href="https://bonjezhack.my.id/syarat-ketentuan">Syarat &amp; Ketentuan</a> -->
+                </div>
+                Copyright © 2025  HmeiSeven - All Right Reserved
+            </div>
+        </div>
+    </section>
+    
+    <div class="fab-container d-none">
+        <div class="fab fab-icon-holder" style="background-color:#FFF; padding:5px">
+            <img src="/assets/callcenter.png" class="img-fluid" alt="" style="margin-top: -6px;">
+        </div>
+        <ul class="fab-options">
+                        <li>
+                <a href="https://t.me/gamestore_vip" class="text-decoration-none" target="_blank">
+                    <div class="fab-icon-holder bg-white">
+                        <img src="/assets/sosmed/1694565892_6066fc43d2f084b6464d.png" width="45" style="margin-top: -8px;">
+                    </div>
+                </a>
+            </li>
+                        <li>
+                <a href="https://wa.me/62895413792484" class="text-decoration-none" target="_blank">
+                    <div class="fab-icon-holder bg-white">
+                        <img src="/assets/sosmed/1694152734_15d350994cb8350a2fed.png" width="45" style="margin-top: -8px;">
+                    </div>
+                </a>
+            </li>
+                    </ul>
+        <a href="#" class="act-btn-top text-decoration-none" onclick="toTop()" style="display: none; background-color: #bd4cae; bottom: 19px;">
+            <i class="fas fa-angle-up mt-2"></i>
+        </a>
+    </div>
+    
+    <div class="eniv-popup-sosmed">
+        <div class="eniv-popup-sosmed-button" onclick="show_bantuan();">
+            <img src="/assets/callcenter.png">
+            Bantuan
+        </div>
+        <div class="eniv-popup-sosmed-list d-none">
+            <div class="eniv-popup-sosmed-header">
+                <h1>Butuh Bantuan?</h1>
+                <p>Silahkan klik link di bawah ini</p>
+            </div>
+                        <a href="https://t.me/gamestore_vip" class="eniv-popup-sosmed-item" target="_blank">
+                <img src="/assets/sosmed/1694565892_6066fc43d2f084b6464d.png">
+                <span>Telegram</span>
+            </a>
+                        <a href="https://wa.me/62895413792484" class="eniv-popup-sosmed-item" target="_blank">
+                <img src="/assets/sosmed/1694152734_15d350994cb8350a2fed.png">
+                <span>Whatsapp</span>
+            </a>
+                    </div>
+    </div>
+
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="/assets/js/flipdown.min.js"></script>
+
+            <script>
+            $('.owl-banner').owlCarousel({
+                loop:false,
+                margin:10,
+                nav:false,
+                responsive:{
+                    0:{
+                        items:1
+                    },
+                    600:{
+                        items:1
+                    },
+                    1000:{
+                        items:1
+                    }
+                }
+            });
+
+            function select_tipe(slug) {
+                $("a.category").removeClass('active');
+                $("#category-" + slug).addClass('active');
+
+                $(".all-category-games").addClass('d-none');
+
+                $("#tipe-" + slug).removeClass('d-none');
+            }
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                var flipdown = new FlipDown(1736006400, {
+                    theme: "light",
+                }).start().ifEnded(() => {
+                    window.location.reload();
+                });
+            });
+            
+            $('#flash').owlCarousel({
+                loop:true,
+                margin:10,
+                autoplay:true,
+                autoplayTimeout:2000,
+                autoplayHoverPause:true,
+                responsive:{
+                    0:{
+                        items:2
+                    },
+                    600:{
+                        items:4
+                    },
+                    1000:{
+                        items:4
+                    }
+                }
+            });
+        </script>
+        
+    
+    
+        <script>
+
+        feather.replace();
+
+        $('.metode-top').owlCarousel({
+            loop:true,
+            margin:10,
+            autoplay:true,
+            autoplayTimeout:2000,
+            responsive:{
+                0:{
+                    items:3
+                },
+                600:{
+                    items:3
+                },
+                1000:{
+                    items:4
+                }
+            }
+        });
+
+        function salin(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                Swal.fire('Berhasil', 'Teks berhasil disalin', 'success');
+            });
+        }
+
+        function close_modal_popup() {
+            if ($("#i-read").prop('checked')) {
+                $.ajax({
+                    url: 'https://bonjezhack.my.id/home/popup',
+                });
+            }
+        }
+    </script>
+
+        <section class="custom-social-proof" style="border: 1px solid rgb(240, 119, 75); display: none; height: 82px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;">
+        <div class="custom-notification">
+            <div class="custom-notification-container">
+                <div class="custom-notification-image-wrapper" style="padding-left: 18px;">
+                    <img id="map1" src="/assets/1705673732_0808da0ddc5d2cb2e179.jpg" style="width: 50px; height: 50px">
+                </div>
+                <div class="custom-notification-content-wrapper">
+                    <p class="custom-notification-content pt-4">
+                        Seseorang baru saja membeli <span id="product">Cheat DK HmeiSeven</span> <br>
+                        <small style="font-size: 12px;"><span id="time">4</span> jam yang lalu </small>
+                    </p>
+                </div>
+                
+            </div>
+            <div class="custom-close"></div>
+        </div>
+    </section>
+    
+    <script>
+        var product = new Array ();
+        
+        $.ajax({
+            url: 'https://bonjezhack.my.id/home/sales',
+            dataType: 'JSON',
+            success: function(result) {
+                product = result;
+            }
+        });
+        
+        setInterval(function() {
+            $(".custom-social-proof").stop().slideToggle('slow');
+        }, 6000);
+        
+        $(".custom-close").click(function() {
+            $(".custom-social-proof").stop().slideToggle('slow');
+        });
+        
+        setInterval(function() {
+            var myNumber = Math.floor(7 * Math.random());
+        
+            $('#product').text(product[Math.floor(7 * Math.random())]);
+            var timeVal = Math.floor(7 * Math.random());
+        
+            $('#time').text(timeVal);
+        }, 6000);
+    </script>
+    
+    <script>
+        function show_bantuan() {
+            var el = $(".eniv-popup-sosmed-list");
+
+            if (el.hasClass('d-none')) {
+                el.removeClass('d-none');
+            } else {
+                el.addClass('d-none');
+            }
+        }
+    </script>
+
+<audio class="audio-output" style="display: none;"></audio><div id="volume-booster-visusalizer">
+                    <div class="sound">
+                        <div class="sound-icon"></div>
+                        <div class="sound-wave sound-wave_one"></div>
+                        <div class="sound-wave sound-wave_two"></div>
+                        <div class="sound-wave sound-wave_three"></div>
+                    </div>
+                    <div class="segments-box">
+                        <div data-range="1-20" class="segment"><span></span></div>
+                        <div data-range="21-40" class="segment"><span></span></div>
+                        <div data-range="41-60" class="segment"><span></span></div>
+                        <div data-range="61-80" class="segment"><span></span></div>
+                        <div data-range="81-100" class="segment"><span></span></div>
+                    </div>
+                </div></body></html>
